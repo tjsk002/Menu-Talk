@@ -7,7 +7,7 @@
           , initial-scale="1">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/custom.css">
-    <title>php 게시판 웹 사이트 연습</title>
+    <title>php 게시판 웹 사이트</title>
 </head>
 <body>
 <!-- test -->
