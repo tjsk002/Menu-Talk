@@ -5,18 +5,18 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8" name="viewport" content="width=device-width"
           , initial-scale="1">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/custom.css">
-    <title>php 게시판 웹 사이트</title>
+    <link rel="stylesheet" href="../assets/scss/bootstrap.scss">
+    <link rel="stylesheet" href="../assets/scss/custom.scss">
+  <title>php 게시판 웹 사이트</title>
 </head>
 <body>
 <!-- test -->
-<?php
+@php
 //String userID = null;
 //if (session.getAttribute("userID") != null) {
 //userID = (String) session.getAttribute("userID");
 //}
-?>
+@endphp
 <nav class="navbar navbar-default">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed"
@@ -50,7 +50,10 @@
     <?php
         } else {
         ?>
-
+{{--@if()--}}
+{{--        @else--}}
+{{--    @elseif--}}
+{{--        @endif--}}
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown"><a href="#" class="dropdown-toggle"
                                     data-toggle="dropdown" role="button" aria-haspopup="true"
