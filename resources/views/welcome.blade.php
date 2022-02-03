@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,78 +10,67 @@
 
 {{--    <link rel="stylesheet" href="{{asset('css/custom.css')}}">--}}
 
-    <!-- Fonts -->
+<!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
     <style>
         /*@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);*/
         /*@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);*/
 
-        *{
-            font-family:'Nanum Gothic';
+        * {
+            font-family: 'Nanum Gothic';
         }
 
-        h1{
-            font-family : 'Hanna';
+        h1 {
+            font-family: 'Hanna';
         }
 
     </style>
     <title>php 게시판 웹 사이트</title>
 </head>
 <body>
-<!-- test -->
-@php
-    //String userID = null;
-    //if (session.getAttribute("userID") != null) {
-    //userID = (String) session.getAttribute("userID");
-    //}
-@endphp
-<nav class="navbar navbar-default">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed"
-                data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
-                aria-expanded="false">
-            <span class="icon-bar"></span> <span class="icon-bar"></span> <span
-                    class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">php 게시판 웹 사이트</a>
-    </div>
 
-    <div class="collapse navbar-collapse"
-         id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-            <li class="active"><a href="/">메인 {{$name}}</a></li>
-            <li><a href="{{route('board')}}">게시판</a></li>
-        </ul>
+{{--<nav class="navbar navbar-default">--}}
+{{--    <div class="navbar-header">--}}
+{{--        <button type="button" class="navbar-toggle collapsed"--}}
+{{--                data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"--}}
+{{--                aria-expanded="false">--}}
+{{--            <span class="icon-bar"></span> <span class="icon-bar"></span> <span--}}
+{{--                    class="icon-bar"></span>--}}
+{{--        </button>--}}
+{{--        <a class="navbar-brand" href="#">php 게시판 웹 사이트</a>--}}
+{{--    </div>--}}
 
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown"><a href="#" class="dropdown-toggle"
-                                    data-toggle="dropdown" role="button" aria-haspopup="true"
-                                    aria-expanded="flase">접속하기<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">로그인</a></li>
-                    <li><a href="{{route('join')}}">회원가입</a></li>
-                </ul></li>
-        </ul>
+{{--    <div class="collapse navbar-collapse"--}}
+{{--         id="bs-example-navbar-collapse-1">--}}
+{{--        <ul class="nav navbar-nav">--}}
+{{--            <li class="active"><a href="/">메인 {{$name}}</a></li>--}}
+{{--            <li><a href="{{route('board')}}">게시판</a></li>--}}
+{{--        </ul>--}}
 
-        {{--@if()--}}
-        {{--        @else--}}
-        {{--    @elseif--}}
-        {{--        @endif--}}
+{{--        <ul class="nav navbar-nav navbar-right">--}}
+{{--            <li class="dropdown"><a href="#" class="dropdown-toggle"--}}
+{{--                                    data-toggle="dropdown" role="button" aria-haspopup="true"--}}
+{{--                                    aria-expanded="flase">접속하기<span class="caret"></span></a>--}}
+{{--                <ul class="dropdown-menu">--}}
+{{--                    <li><a href="#">로그인</a></li>--}}
+{{--                    <li><a href="{{route('join')}}">회원가입</a></li>--}}
+{{--                </ul></li>--}}
+{{--        </ul>--}}
 
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown"><a href="#" class="dropdown-toggle"
-                                    data-toggle="dropdown" role="button" aria-haspopup="true"
-                                    aria-expanded="flase">회원관리<span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                    <li><a href="logoutAction.jsp">로그아웃</a></li>
-
-                </ul>
-            </li>
-        </ul>
-
-    </div>
-</nav>
+{{--        <ul class="nav navbar-nav navbar-right">--}}
+{{--            <li class="dropdown"><a href="#" class="dropdown-toggle"--}}
+{{--                                    data-toggle="dropdown" role="button" aria-haspopup="true"--}}
+{{--                                    aria-expanded="flase">회원관리<span class="caret"></span></a>--}}
+{{--                <ul class="dropdown-menu">--}}
+{{--                    <li><a href="logoutAction.jsp">로그아웃</a></li>--}}
+{{--                </ul>--}}
+{{--            </li>--}}
+{{--        </ul>--}}
+{{--    </div>--}}
+{{--</nav>--}}
+@yield('content')
+@yield('script')
 <div class="container">
     <div class="jumbotron">
         <div class="container">
@@ -102,13 +90,13 @@
         <!-- 스틸컷 이미지 삽입 -->
         <div class="carousel-inner">
             <div class="item active">
-{{--                <img src="{{asset('images/img1.jpg')}}" alt="색상있는 공 이미지">--}}
+                {{--                <img src="{{asset('images/img1.jpg')}}" alt="색상있는 공 이미지">--}}
             </div>
             <div class="item">
-{{--                <img src="{{asset('images/img2.jpg')}}" alt="물감 이미지">--}}
+                {{--                <img src="{{asset('images/img2.jpg')}}" alt="물감 이미지">--}}
             </div>
             <div class="item">
-{{--                <img src="{{asset('images/img3.jpg')}}" alt="색연필 이미지">--}}
+                {{--                <img src="{{asset('images/img3.jpg')}}" alt="색연필 이미지">--}}
             </div>
         </div>
         <!-- 스틸컷 넘기는 버튼 -->
@@ -121,4 +109,16 @@
     </div>
 </div>
 </body>
+<footer>
+    {{--    @extends('layouts.master')--}}
+    {{--    @section('content')--}}
+    {{--        <p>저는 자식 뷰의 content 입니다.</p>--}}
+    {{--    @endsection--}}
+
+    {{--    @section('script')--}}
+    {{--        <script>--}}
+    {{--            alert('ddd');--}}
+    {{--        </script>--}}
+    {{--    @endsection--}}
+</footer>
 </html>

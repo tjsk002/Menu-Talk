@@ -11,8 +11,12 @@
 |
 */
 
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('header');
 });
 
 // 메인 페이지에서 '메인 배너' 클릭 시 이동하는 라우터
@@ -27,8 +31,8 @@ Route::get('/boardWrite', 'Board\BoardController@write')
     ->name('boardWrite');
 
 // 메인 페이지에서 '메인' 클릭 시 이동하는 라우터
-Route::get('/main','Main\MainController@create')
-    ->name('main');
+//Route::get('/main','Main\MainController@create')
+//    ->name('main');
 
 // 메인 페이지에서 '회원가입' 클릭 시 이동하는 라우터
 Route::get('/join','Admin\AdminJoinController@join')
@@ -41,6 +45,8 @@ Route::get('/join','Admin\AdminJoinController@join')
 Route::get('/', function(){
     return view('welcome',['name' => 'lim']);
 });
+
+Route::resource('articles','ArticlesController');
 
 //Route::get('/', function (){
 //    return view('board', ['name' => 'dd']);

@@ -17,9 +17,9 @@ class BoardController
         return view('board.boardWrite');
     }
 
-    public function show(\App\Article $article){
-        return view('article.show', compact('article'));
-    }
+//    public function show(\App\ ){
+//        return view('.show', compact(''));
+//    }
 
     // 게시판 상세보기
     public function detail(Request $request)

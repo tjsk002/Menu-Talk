@@ -54,7 +54,7 @@
 </nav>
 <div class="container">
     <div class="row">
-        <form method="post" action="writeAction.jsp">
+        <form method="post" action="#">
             <table class="table table-striped"
                    style="text-align: center; border: 1px solid #dddddd;">
                 <thead>
