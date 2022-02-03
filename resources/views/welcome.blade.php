@@ -5,15 +5,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8" name="viewport" content="width=device-width"
           , initial-scale="1">
-    <link rel="stylesheet" href="resources/assets/sass/bootstrap.scss">
-    <link rel="stylesheet" href="resources/assets/sass/bootstrap-theme.css">
-    <link rel="stylesheet" href="resources/assets/css/test.css">
+    <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap-theme.css')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap-theme.min.css')}}">
+
+{{--    <link rel="stylesheet" href="{{asset('css/custom.css')}}">--}}
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
     <style>
         /*@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);*/
         /*@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);*/
+
         *{
             font-family:'Nanum Gothic';
         }
@@ -47,8 +51,8 @@
     <div class="collapse navbar-collapse"
          id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li class="active"><a href="main.jsp">메인</a></li>
-            <li><a href="{{route('boardCreate')}}}">게시판</a></li>
+            <li class="active"><a href="/">메인 {{$name}}</a></li>
+            <li><a href="{{route('board')}}">게시판</a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
@@ -56,8 +60,8 @@
                                     data-toggle="dropdown" role="button" aria-haspopup="true"
                                     aria-expanded="flase">접속하기<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="login.jsp">로그인</a></li>
-                    <li><a href="join.jsp">회원가입</a></li>
+                    <li><a href="#">로그인</a></li>
+                    <li><a href="{{route('join')}}">회원가입</a></li>
                 </ul></li>
         </ul>
 
@@ -65,6 +69,7 @@
         {{--        @else--}}
         {{--    @elseif--}}
         {{--        @endif--}}
+
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown"><a href="#" class="dropdown-toggle"
                                     data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -97,13 +102,13 @@
         <!-- 스틸컷 이미지 삽입 -->
         <div class="carousel-inner">
             <div class="item active">
-                <img src="/images/img1.jpg" alt="색상있는 공 이미지">
+{{--                <img src="{{asset('images/img1.jpg')}}" alt="색상있는 공 이미지">--}}
             </div>
             <div class="item">
-                <img src="/images/img2.jpg" alt="물감 이미지">
+{{--                <img src="{{asset('images/img2.jpg')}}" alt="물감 이미지">--}}
             </div>
             <div class="item">
-                <img src="/images/img3.jpg" alt="색연필 이미지">
+{{--                <img src="{{asset('images/img3.jpg')}}" alt="색연필 이미지">--}}
             </div>
         </div>
         <!-- 스틸컷 넘기는 버튼 -->

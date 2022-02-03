@@ -26,6 +26,8 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+        //url 파라미터와 모델 연결 (App\Article 모델에 {article} 연결)
+        Route::model('article', \App\Article::class);
     }
 
     /**
