@@ -15,12 +15,18 @@
 //    return view('welcome');
 //});
 
-Route::get('/', function () {
-    return view('header');
-});
+// 메인페이지 -> home
+//Route::get('/', function () {
+//    return view('home');
+//});
 
-// 메인 페이지에서 '메인 배너' 클릭 시 이동하는 라우터
+//Route::get('/', 'Home\HomeController@home')
+////    return view('layouts.header')
+//    -> name('home');
 
+Route::get('/', 'Home\Home2Controller@home')
+//    return view('layouts.header')
+    -> name('home2');
 
 // 메인 페이지에서 '게시판' 클릭 시 이동하는 라우터
 Route::get('/board', 'Board\BoardController@board')
@@ -30,24 +36,21 @@ Route::get('/board', 'Board\BoardController@board')
 Route::get('/boardWrite', 'Board\BoardController@write')
     ->name('boardWrite');
 
-// 메인 페이지에서 '메인' 클릭 시 이동하는 라우터
-//Route::get('/main','Main\MainController@create')
-//    ->name('main');
+// 게시판 보기
+Route::get('/article', 'Articles\ArticlesController@index')
+    -> name('article');
+
+// 게시판 작성하기
+//Route::get('/articleCreate', 'Articles\ArticlesController@create')
+//    -> name('articleCreate');
 
 // 메인 페이지에서 '회원가입' 클릭 시 이동하는 라우터
-Route::get('/join','Admin\AdminJoinController@join')
+Route::get('/join','Admin\JoinController@index')
     ->name('join');
 
-// 메인 페이지에서 '로그인' 클릭 시 이동하는 라우터
-//Route::get('/login','Admin\AdminLoginController@login')
-//    ->name('login');
+Route::resource('articles','Articles\ArticlesController');
 
-Route::get('/', function(){
-    return view('welcome',['name' => 'lim']);
-});
 
-Route::resource('articles','ArticlesController');
-
-//Route::get('/', function (){
-//    return view('board', ['name' => 'dd']);
+//Route::get('blade', function(){
+//    return view('child');
 //});

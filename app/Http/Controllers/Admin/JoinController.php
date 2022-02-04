@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Articles;
 
+//use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ArticlesController extends Controller
+class JoinController
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,7 @@ class ArticlesController extends Controller
     public function index()
     {
         // __METHOD__ Article 컬렉션을 조회
-//        return __METHOD__
+        return view('admin.join');
     }
 
     /**
