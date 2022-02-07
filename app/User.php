@@ -26,6 +26,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
+        // 프로퍼티 값을 은닉하는 방법 -> hidden
         'password', 'remember_token',
     ];
+
+    protected $table = 'authors';
+
 }
