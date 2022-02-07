@@ -31,7 +31,7 @@
          id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
             <li><a href="{{route('home2')}}">메인</a></li>
-            <li><a href="{{route('article')}}">게시판</a></li>
+            <li><a href="{{route('index')}}">게시판</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown"><a href="#" class="dropdown-toggle"

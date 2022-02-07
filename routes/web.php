@@ -37,8 +37,8 @@ Route::get('/boardWrite', 'Board\BoardController@write')
     ->name('boardWrite');
 
 // 게시판 보기
-Route::get('/article', 'Articles\ArticlesController@index')
-    -> name('article');
+Route::get('/index', 'Articles\ArticlesController@index')
+    -> name('index');
 
 // 게시판 작성하기
 //Route::get('/articleCreate', 'Articles\ArticlesController@create')

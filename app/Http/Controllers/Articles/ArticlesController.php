@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Articles;
 
 //use App\Http\Controllers\Controller;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Articles;
 use Illuminate\Http\Request;
 
 class ArticlesController extends Controller
@@ -13,12 +14,27 @@ class ArticlesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    // index() show() -> guest 허용
+
+//    $allTags란 변수 포험을 위한 모든 뷰 공유
+//    public function __construct()
+//    {
+//        $this->middleware('auth', ['except'=> ['index', 'show']]);
+//        $this->middleware('accessible', ['except' => ['index', 'show', 'create']]);
+//        view()-> share('allTags', \App\Tag::with('articles')->get());
+//        parent::__construct();
+//    }
+
+
     public function index()
     {
 //        $articles = \App\Article::get();
         // __METHOD__ Article 컬렉션을 조회
-
-        return view('article.article');
+//        $articles = Articles::with('comments', /'author')->latest()->paginate(2);
+        $articles = Articles::where('id', '1')->first();
+        return view('articles.index', compact('articles'));
+//        return view('articles.index');
     }
 
     /**
@@ -29,13 +45,13 @@ class ArticlesController extends Controller
     public function create()
     {
         // 컬렉션을 만들기 위한 폼을 담은 뷰를 반환한다
-        return view('article.articleCreate');
+        return view('articles.articleCreate');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -46,7 +62,7 @@ class ArticlesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show(\App\Http\Controllers\Articles $articles)
@@ -58,7 +74,7 @@ class ArticlesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -69,8 +85,8 @@ class ArticlesController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -81,7 +97,7 @@ class ArticlesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

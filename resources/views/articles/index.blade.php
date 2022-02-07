@@ -18,10 +18,27 @@
                 </tr>
                 </thead>
                 <tbody>
+                <article>
+                    @forelse($articles as $articles)
+                        @include('$articles.partial.articles', ['articles => $articles'])
+                    @empty
+                        <p>{{trans('errors.not_found_description')}}</p>
+                    @endforelse
+                    <div>
+{{--                        {!! $articles->appends(Request::except('page'))->render() !!}--}}
+                    </div>
+                </article>
                 <tr>
-                    <td><a href="{{route('articles.show','$article->id')}}">{{$article->title}}</a></td>
-                    <td><a href="#">title</a></td>
-                    <td><a href="#">2</a></td>
+                    <td><a href="#">1</a></td>
+                    <td><a href="#">{{$article->title}}</a></td>
+                    <td>
+                        <a href="#">
+{{--                            {{$tag->name}}--}}
+{{--                            @if ($tagCount = $tag->articles->count())--}}
+{{--                                <span class="badge badge-default">{{ $tagCount }}</span>--}}
+{{--                            @endif--}}
+                        </a>
+                    </td>
                     <td><a href="#">2</a></td>
                 </tr>
                 {{--                <tr>--}}
@@ -35,6 +52,7 @@
                 {{--                        <td><a href="#">2</a></td>--}}
                 {{--                    @endforelse--}}
                 {{--                </tr>--}}
+                </article>
                 </tbody>
             </table>
 
