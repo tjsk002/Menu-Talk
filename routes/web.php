@@ -44,13 +44,12 @@ Route::get('/article', 'Articles\ArticlesController@index')
 //Route::get('/articleCreate', 'Articles\ArticlesController@create')
 //    -> name('articleCreate');
 
-// 메인 페이지에서 '회원가입' 클릭 시 이동하는 라우터
+// '회원가입' 클릭 시 이동하는 라우터
 Route::get('/join','Admin\JoinController@index')
     ->name('join');
 
+// '로그인' 클릭 시 이동하는 라우터
+Route::get('/login','Admin\LoginController@index')
+    ->name('login');
+
 Route::resource('articles','Articles\ArticlesController');
-
-
-//Route::get('blade', function(){
-//    return view('child');
-//});

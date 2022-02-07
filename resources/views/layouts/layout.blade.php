@@ -38,7 +38,7 @@
                                     data-toggle="dropdown" role="button" aria-haspopup="true"
                                     aria-expanded="flase">접속하기<span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">로그인</a></li>
+                    <li><a href="{{route('login')}}">로그인</a></li>
                     <li><a href="{{route('join')}}">회원가입</a></li>
                 </ul>
             </li>

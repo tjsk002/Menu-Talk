@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Articles;
+namespace App\Http\Controllers\Admin;
 
 //use App\Http\Controllers\Controller;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ArticlesController extends Controller
+class LoginController
 {
     /**
      * Display a listing of the resource.
@@ -15,10 +14,8 @@ class ArticlesController extends Controller
      */
     public function index()
     {
-//        $articles = \App\Article::get();
         // __METHOD__ Article 컬렉션을 조회
-
-        return view('article.article');
+        return view('admin.login');
     }
 
     /**
@@ -29,7 +26,6 @@ class ArticlesController extends Controller
     public function create()
     {
         // 컬렉션을 만들기 위한 폼을 담은 뷰를 반환한다
-        return view('article.articleCreate');
     }
 
     /**
@@ -49,10 +45,10 @@ class ArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(\App\Http\Controllers\Articles $articles)
+    public function show($id)
     {
         // 다음 기본키를 가진 article 모델을 조회한다
-        return view('articles.show', compact('articles'));
+
     }
 
     /**
