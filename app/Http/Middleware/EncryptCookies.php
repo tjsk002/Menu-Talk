@@ -13,6 +13,6 @@ class EncryptCookies extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        // 쿠키 변조를 막으려는 조치, 암복호화 역할 -> EncryptCookies
     ];
 }

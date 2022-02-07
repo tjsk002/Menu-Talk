@@ -60,14 +60,20 @@ Route::resource('articles','Articles\ArticlesController');
 Route::get('admin/login', function(){
     $credentials = [
         'email' => 'apple@naver.com',
+    /*
+     * DB에 있는 해싱되어있는 비밀번호 = 1234
+     * 'password' => Hash::make('1234')
+     * 혹은 php artisan tinker 에 bcrypt('1234')를 입력해준다
+     */
         'password' => '1234'
     ];
 // auth() -> 도우미 함수
 // attempt(array $credentials = [], bool$remember = false) 메서드 이용
-//    만약 true를 준다고 하면 마이크레이션에서 봤던
+//    만약 true 준다고 하면 마이크레이션에서 봤던
 //    remember_token 열과 같이 동작해서 사용자 로그인을 기억할 수 있다
 
     if(! auth()->attempt($credentials)){
+//        dd($credentials);
         return '로그인 정보가 정확하지 않습니다.';
     }
 
@@ -83,8 +89,11 @@ Route::get('admin/login', function(){
 });
 
 Route::get('protected', function (){
+    // 세션에 저장된 값을 덤프하는 코드
     dump(session()->all());
     if(!auth()->check()){
+        // check() url 요청한 브라우저 로그인 한 상태면 true 반환한다
+        // auth() -> check() 없으면 errorException
         return '누구신가요?';
     }
     return '환영합니다.' . auth()->user()->name;
