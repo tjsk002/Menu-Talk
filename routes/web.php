@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,31 +50,36 @@ Route::get('/join','Admin\JoinController@index')
     ->name('join');
 
 // '로그인' 클릭 시 이동하는 라우터
-Route::get('/login','Admin\LoginController@index')
-    ->name('login');
+//Route::get('/login','Admin\LoginController@index')
+//    ->name('login');
 
 Route::resource('articles','Articles\ArticlesController');
 
 // 사용자 인증
 //Route::get('/', 'Home\Home2Controller@home');
 
-Route::get('admin/login', function(){
-    $credentials = [
-        'email' => 'apple@naver.com',
+Route::post('/login','LoginController@login');
+
+//Route::post('admin/login', function(Request $req){
+//    $credentials = [
+//        'email' => 'apple@naver.com',
+//        'email'=> route('admin/login'),
     /*
      * DB에 있는 해싱되어있는 비밀번호 = 1234
      * 'password' => Hash::make('1234')
      * 혹은 php artisan tinker 에 bcrypt('1234')를 입력해준다
      */
-        'password' => '1234'
-    ];
+//        'password' => Hash::make('1234')
+//        'password' => '1234'
+//    ];
+
 // auth() -> 도우미 함수
 // attempt(array $credentials = [], bool$remember = false) 메서드 이용
 //    만약 true 준다고 하면 마이크레이션에서 봤던
 //    remember_token 열과 같이 동작해서 사용자 로그인을 기억할 수 있다
 
     if(! auth()->attempt($credentials)){
-//        dd($credentials);
+        dd($credentials);
         return '로그인 정보가 정확하지 않습니다.';
     }
 
@@ -99,7 +105,15 @@ Route::get('protected', function (){
     return '환영합니다.' . auth()->user()->name;
 });
 
+Route::get('protected', ['middleware'=>'auth' ,function (){
+
+}]);
+
 Route::get('admin/logout', function(){
     auth()->logout();
     return '로그아웃되었습니다.';
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

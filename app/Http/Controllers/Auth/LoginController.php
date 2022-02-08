@@ -36,4 +36,22 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    // 로그인
+    public function login(Request $req){
+
+        $email = $req->input('email');
+        $pwd = $req->input('password');
+
+        echo Hash::make($pwd);
+
+        $result = Auth::attempt(['email' => $email, 'password' => $pwd], true);
+
+        if ($result) {
+            return redirect()->intended('/');
+        } else {
+            return redirect()->back();
+        }
+    }
+
 }
