@@ -12,6 +12,24 @@ class JoinController
      *
      * @return \Illuminate\Http\Response
      */
+
+    protected $redirectTo = '/home2';
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+    }
+
+    public function __construct()
+    {
+//        $this->middleware('guest');
+    }
+
+
     public function index()
     {
         // __METHOD__ Article 컬렉션을 조회
@@ -23,9 +41,14 @@ class JoinController
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(array $data)
     {
         // 컬렉션을 만들기 위한 폼을 담은 뷰를 반환한다
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
     }
 
     /**

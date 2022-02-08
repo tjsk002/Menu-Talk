@@ -50,8 +50,8 @@ Route::get('/join','Admin\JoinController@index')
     ->name('join');
 
 // '로그인' 클릭 시 이동하는 라우터
-//Route::get('/login','Admin\LoginController@index')
-//    ->name('login');
+Route::get('/login','Admin\LoginController@index')
+    ->name('login');
 
 Route::resource('articles','Articles\ArticlesController');
 
@@ -60,8 +60,8 @@ Route::resource('articles','Articles\ArticlesController');
 
 Route::post('/login','LoginController@login');
 
-//Route::post('admin/login', function(Request $req){
-//    $credentials = [
+Route::post('admin/login', function(Request $req){
+    $credentials = [
 //        'email' => 'apple@naver.com',
 //        'email'=> route('admin/login'),
     /*
@@ -71,7 +71,7 @@ Route::post('/login','LoginController@login');
      */
 //        'password' => Hash::make('1234')
 //        'password' => '1234'
-//    ];
+    ];
 
 // auth() -> 도우미 함수
 // attempt(array $credentials = [], bool$remember = false) 메서드 이용
