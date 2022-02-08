@@ -55,65 +55,136 @@ Route::get('/login','Admin\LoginController@index')
 
 Route::resource('articles','Articles\ArticlesController');
 
+Auth::routes();
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+});
+
 // 사용자 인증
 //Route::get('/', 'Home\Home2Controller@home');
+/*
+ * 사용자 인증 재구성
+ * 라라벨 내장 인증 삭제 -> 사용자 모델과 연결 되어있어 한계가 있어 수정한다
+ * 삭제 시 ->
+ * rm -rf resources/views/auth
+ * rm -rf app/Controllers/Auth
+ */
 
 Route::post('/login','LoginController@login');
+/**
+ * 라라벨 내장 인증에서 설치한 라우트 삭제 후 사용자 인증 재구성
+ * Route::auth();
+ * url을 하드코드로 사용하지 않고 route()를 사용한다
+ */
 
-Route::post('admin/login', function(Request $req){
-    $credentials = [
-//        'email' => 'apple@naver.com',
-//        'email'=> route('admin/login'),
-    /*
-     * DB에 있는 해싱되어있는 비밀번호 = 1234
-     * 'password' => Hash::make('1234')
-     * 혹은 php artisan tinker 에 bcrypt('1234')를 입력해준다
-     */
-//        'password' => Hash::make('1234')
-//        'password' => '1234'
-    ];
+/*
+ * 사용자 가입 :: 나중에 prefix 묶어줄것
+Route::prefix('admin')->group(function () {
+    Route::get('users', function () {
+        // Matches The "/admin/users" URL
+    });
+});
+*/
+Route::get('auth/join',[
+    'as' => 'users.create',
+    'uses' => 'UsersController@create',
+]);
 
-// auth() -> 도우미 함수
-// attempt(array $credentials = [], bool$remember = false) 메서드 이용
-//    만약 true 준다고 하면 마이크레이션에서 봤던
-//    remember_token 열과 같이 동작해서 사용자 로그인을 기억할 수 있다
+Route::post('auth/join',[
+    'as' => 'users.store',
+    'uses' => 'UsersController@store',
+]);
 
-    if(! auth()->attempt($credentials)){
-        dd($credentials);
-        return '로그인 정보가 정확하지 않습니다.';
-    }
+Route::get('auth/confirm/{code}',[
+    'as' => 'users.create',
+    'uses' => 'UsersController@create',
+]);
 
-//    exception error
-//    try {
+/*사용자 인증*/
+Route::get('auth/login',[
+    'as' => 'session.create',
+    'uses' => 'SessionsController@create',
+]);
+Route::post('auth/login',[
+    'as' => 'session.store',
+    'uses' => 'SessionsController@store',
+]);
+Route::get('auth/logout',[
+    'as' => 'session.destroy',
+    'uses' => 'SessionsController@destroy',
+]);
+
+/*비밀번호 초기화*/
+Route::get('auth/remind',[
+    'as' => 'remind.store',
+    'uses' => 'PasswordsController@getRemind',
+]);
+
+Route::post('auth/remind',[
+    'as' => 'remind.store',
+    'uses' => 'PasswordsController@postRemind',
+]);
+Route::get('auth/reset/{token}',[
+    'as' => 'reset.create',
+    'uses' => 'PasswordsController@getReset',
+]);
+Route::post('auth/reset',[
+    'as' => 'reset.store',
+    'uses' => 'PasswordsController@getReset',
+]);
+
+
+//Route::post('admin/login', function(Request $req){
+//    $credentials = [
+////        'email' => 'apple@naver.com',
+////        'email'=> route('admin/login'),
+//    /*
+//     * DB에 있는 해싱되어있는 비밀번호 = 1234
+//     * 'password' => Hash::make('1234')
+//     * 혹은 php artisan tinker 에 bcrypt('1234')를 입력해준다
+//     */
+////        'password' => Hash::make('1234')
+////        'password' => '1234'
+//    ];
 //
-//    } catch (Exception $e) {
-//        var_dump($e->getTrace());
-//        exit;
+//// auth() -> 도우미 함수
+//// attempt(array $credentials = [], bool$remember = false) 메서드 이용
+////    만약 true 준다고 하면 마이크레이션에서 봤던
+////    remember_token 열과 같이 동작해서 사용자 로그인을 기억할 수 있다
+//
+//    if(! auth()->attempt($credentials)){
+//        dd($credentials);
+//        return '로그인 정보가 정확하지 않습니다.';
 //    }
+//
+////    exception error
+////    try {
+////
+////    } catch (Exception $e) {
+////        var_dump($e->getTrace());
+////        exit;
+////    }
+//
+//    return redirect('protected');
+//});
 
-    return redirect('protected');
-});
+//Route::get('protected', function (){
+//    // 세션에 저장된 값을 덤프하는 코드
+//    dump(session()->all());
+//    if(!auth()->check()){
+//        // check() url 요청한 브라우저 로그인 한 상태면 true 반환한다
+//        // auth() -> check() 없으면 errorException
+//        return '누구신가요?';
+//    }
+//    return '환영합니다.' . auth()->user()->name;
+//});
+//
+//Route::get('admin/logout', function(){
+//    auth()->logout();
+//    return '로그아웃되었습니다.';
+//});
+//
+//Auth::routes();
 
-Route::get('protected', function (){
-    // 세션에 저장된 값을 덤프하는 코드
-    dump(session()->all());
-    if(!auth()->check()){
-        // check() url 요청한 브라우저 로그인 한 상태면 true 반환한다
-        // auth() -> check() 없으면 errorException
-        return '누구신가요?';
-    }
-    return '환영합니다.' . auth()->user()->name;
-});
-
-Route::get('protected', ['middleware'=>'auth' ,function (){
-
-}]);
-
-Route::get('admin/logout', function(){
-    auth()->logout();
-    return '로그아웃되었습니다.';
-});
-
-Auth::routes();
+// end
 
 Route::get('/home', 'HomeController@index')->name('home');

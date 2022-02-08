@@ -11,4 +11,6 @@ class Home2Controller
     {
         return view('home.home2');
     }
+
+
 }

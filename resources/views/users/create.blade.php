@@ -9,9 +9,9 @@
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
             <div class="jumbotron" style="padding-top: 20px;">
-                <form method="post" action="{{route('join')}}">
+                <form method="post" action="{{route('users.store')}}">
                     {{--                csrf_field 함수는 CSRF 토큰 값을 포함하는 HTML hidden Input 필드를 생성--}}
-                    {{ csrf_field() }}
+                    { !! csrf_field() !!}
                     <h3 style="text-align: center;">회원가입 화면</h3>
                     {{--                <div class="form-group">--}}
                     {{--                    <input type="text" class="form-control" placeholder="아이디"--}}
@@ -21,6 +21,8 @@
                         <input type="text" class="form-control" placeholder="이름"
                                name="userName" maxlength="20" value="{{old('name')}}">
                         {{--                    old 함수는 세션에 저장된 이전 입력값(flashed)을 조회 --}}
+                        {!! $error->first('name','<span class="form-error">:message</span>') !!}
+
                         @if ($errors->has('name'))
                             <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
