@@ -29,7 +29,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('authors', function(Blueprint $table){
+        Schema::table('users', function(Blueprint $table){
             $table->string('confirm_code', 60)->nullable();
             $table->boolean('activated')->default(0);
 

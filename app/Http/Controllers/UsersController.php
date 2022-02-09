@@ -34,27 +34,31 @@ class UsersController extends Controller
 
         auth()->login($user);
         flash(auth()->user()->name . '님 환영합니다.');
-//        \Mail::send('emails.auth.confirm',compact('user'), function ($message)use($user){
-//            $message->to($user -> email);
-//            $message->subject(
-//                sprintf('[%s    회원가입을 확인해 주세요.]', config('app.name'))
-//            );
-//        });
 
-//        flush('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
+        \Mail::send('emails.auth.confirm',compact('user'), function ($message)use($user){
+            $message->to($user -> email);
+            $message->subject(
+                sprintf('[%s    회원가입을 확인해 주세요.]', config('app.name'))
+            );
+        });
 
-        return redirect('home2');
+        return $this->respondCreated('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
 
 //        auth()->login($user);
         // 생성한 사용자 객체로 로그인한
 //        flash(auth()->user()->name . '님 환영합니다');
     }
 
+    protected function respondCreated($message){
+        flash($message);
+        return redirect('/');
+    }
+
     public function confirm($code){
         $user = \App\User::whereConfirmCode($code)->first();
 
         if(!$user){
-            flash('url이 정확하지 않습니다.');
+            flash('URL이 정확하지 않습니다.');
             return redirect('/');
         }
         $user->activated = 1;
@@ -62,8 +66,13 @@ class UsersController extends Controller
         $user->save();
 
         auth()->login($user);
-        flash(auth()->user()->name . '님 환영합니다.');
+        flash(auth()->user()->name . '님 환영합니다. 가입 확인되었습니다.');
 
         return redirect('home2');
+    }
+
+    public function __construct()
+    {
+        $this->middleware('guest');
     }
 }

@@ -46,11 +46,11 @@ Route::get('/index', 'Articles\ArticlesController@index')
 //    -> name('articleCreate');
 
 // '회원가입' 클릭 시 이동하는 라우터
-//Route::get('/join','Admin\JoinController@index')
+//Route::get('/join','Auth\JoinController@index')
 //    ->name('join');
 //
 //// '로그인' 클릭 시 이동하는 라우터
-//Route::get('/login','Admin\LoginController@index')
+//Route::get('/login','Auth\LoginController@index')
 //    ->name('login');
 
 Route::resource('articles','Articles\ArticlesController');
@@ -96,7 +96,7 @@ Route::post('auth/join',[
 ]);
 
 Route::get('auth/confirm/{code}',[
-    'as' => 'users.create',
+    'as' => 'users.confirm',
     'uses' => 'UsersController@create',
 ])->where('code','[\pL-\pN]{60}');
 // 60바이트 활성화 코드로 사용자를 찾은 후, 활성화 코드는 지우고 가입 확인 여부 열은 1로 바꾼다
@@ -189,4 +189,4 @@ Route::post('auth/reset',[
 
 // end
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home2', 'Home2Controller@index')->name('home2');
