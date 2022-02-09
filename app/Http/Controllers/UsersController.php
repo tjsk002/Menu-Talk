@@ -36,6 +36,7 @@ class UsersController extends Controller
         flash(auth()->user()->name . '님 환영합니다.');
 
         \Mail::send('emails.auth.confirm',compact('user'), function ($message)use($user){
+        event(new \App\Events\UserCreated($user));
             $message->to($user -> email);
             $message->subject(
                 sprintf('[%s    회원가입을 확인해 주세요.]', config('app.name'))
@@ -75,4 +76,5 @@ class UsersController extends Controller
     {
         $this->middleware('guest');
     }
+
 }

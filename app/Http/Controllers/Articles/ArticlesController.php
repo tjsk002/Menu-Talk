@@ -65,11 +65,13 @@ class ArticlesController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(\App\Http\Controllers\Articles $articles)
-    {
-        // 다음 기본키를 가진 article 모델을 조회한다
-        return view('articles.show', compact('articles'));
-    }
+//    public function show(\App\Http\Controllers\Articles $articles)
+//    {
+//        // 다음 기본키를 가진 article 모델을 조회한다
+//        return view('articles.show', compact('articles'));
+//    }
+
+
 
     /**
      * Show the form for editing the specified resource.

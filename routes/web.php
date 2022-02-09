@@ -30,12 +30,12 @@ Route::get('/', 'Home\Home2Controller@home')
     -> name('home2');
 
 // 메인 페이지에서 '게시판' 클릭 시 이동하는 라우터
-Route::get('/board', 'Board\BoardController@board')
-    -> name('board');
+//Route::get('/board', 'Board\BoardController@board')
+//    -> name('board');
 
 // board page -> '글쓰기' 버튼 클릭 시
-Route::get('/boardWrite', 'Board\BoardController@write')
-    ->name('boardWrite');
+//Route::get('/boardWrite', 'Board\BoardController@write')
+//    ->name('boardWrite');
 
 // 게시판 보기
 Route::get('/index', 'Articles\ArticlesController@index')
@@ -55,9 +55,9 @@ Route::get('/index', 'Articles\ArticlesController@index')
 
 Route::resource('articles','Articles\ArticlesController');
 
-Auth::routes();
-Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
-});
+//Auth::routes();
+//Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
+//});
 
 // 사용자 인증
 //Route::get('/', 'Home\Home2Controller@home');
@@ -69,7 +69,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
  * rm -rf app/Controllers/Auth
  */
 
-Route::post('/login','LoginController@login');
+//Route::post('/login','LoginController@login');
+
 /**
  * 라라벨 내장 인증에서 설치한 라우트 삭제 후 사용자 인증 재구성
  * Route::auth();
@@ -97,42 +98,42 @@ Route::post('auth/join',[
 
 Route::get('auth/confirm/{code}',[
     'as' => 'users.confirm',
-    'uses' => 'UsersController@create',
+    'uses' => 'UsersController@confirm',
 ])->where('code','[\pL-\pN]{60}');
 // 60바이트 활성화 코드로 사용자를 찾은 후, 활성화 코드는 지우고 가입 확인 여부 열은 1로 바꾼다
 
 /*사용자 인증*/
 Route::get('auth/login',[
-    'as' => 'session.create',
+    'as' => 'sessions.create',
     'uses' => 'SessionsController@create',
 ]);
 Route::post('auth/login',[
-    'as' => 'session.store',
+    'as' => 'sessions.store',
     'uses' => 'SessionsController@store',
 ]);
 Route::get('auth/logout',[
-    'as' => 'session.destroy',
+    'as' => 'sessions.destroy',
     'uses' => 'SessionsController@destroy',
 ]);
 
 /*비밀번호 초기화*/
-Route::get('auth/remind',[
-    'as' => 'remind.store',
-    'uses' => 'PasswordsController@getRemind',
-]);
-
-Route::post('auth/remind',[
-    'as' => 'remind.store',
-    'uses' => 'PasswordsController@postRemind',
-]);
-Route::get('auth/reset/{token}',[
-    'as' => 'reset.create',
-    'uses' => 'PasswordsController@getReset',
-]);
-Route::post('auth/reset',[
-    'as' => 'reset.store',
-    'uses' => 'PasswordsController@getReset',
-]);
+//Route::get('auth/remind',[
+//    'as' => 'remind.store',
+//    'uses' => 'PasswordsController@getRemind',
+//]);
+//
+//Route::post('auth/remind',[
+//    'as' => 'remind.store',
+//    'uses' => 'PasswordsController@postRemind',
+//]);
+//Route::get('auth/reset/{token}',[
+//    'as' => 'reset.create',
+//    'uses' => 'PasswordsController@getReset',
+//]);
+//Route::post('auth/reset',[
+//    'as' => 'reset.store',
+//    'uses' => 'PasswordsController@getReset',
+//]);
 
 
 //Route::post('admin/login', function(Request $req){
@@ -189,4 +190,4 @@ Route::post('auth/reset',[
 
 // end
 
-Route::get('/home2', 'Home2Controller@index')->name('home2');
+//Route::get('/', 'Home\Home2Controller@home')->name('home2');
