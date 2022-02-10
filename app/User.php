@@ -17,8 +17,9 @@ class User extends Authenticatable
 
     protected $fillable = [
         // id, pw, name, email
-//        'name', 'email', 'password',
-        'confirm_code', 'activated', '...'
+        'name', 'email', 'password',
+//        'businessNumber'
+//        'confirm_code', 'activated', '...'
     ];
 
     /**
@@ -28,8 +29,9 @@ class User extends Authenticatable
      */
     protected $hidden = [
         // 프로퍼티 값을 은닉하는 방법 -> hidden
-//        'password', 'remember_token',
-        'confirm_code', '...'
+        'password',
+//        'remember_token',
+//        'confirm_code', '...'
     ];
 
     protected $casts = [

@@ -26,16 +26,17 @@ class SessionsController extends Controller
      */
 
     public function store(Request $request){
-
-
+//        flash('s');
+//        dump('1'); exit;
         $this->validate($request, [
             'email'=>'required|email',
             'password'=>'required|min:2'
         ]);
 
 //        if(!auth()->attempt($request->only('email','password'),$request->has('remember'))){
+
         if(!auth()->attempt($request->only('email','password'))){
-//            flash('이메일 또는 비밀번호가 맞지 않습니다');
+            flash('이메일 또는 비밀번호가 맞지 않습니다');
 //            return back()->withInput();
             return $this->respondError('이메일 또는 비밀번호가 맞지 않습니다.');
         }
@@ -52,11 +53,12 @@ class SessionsController extends Controller
         }
 
         flash(auth()->user()->name . '님 환영합니다.');
-        return redirect()->intended('home2');
+//        dump('2'); exit;
+        return redirect()->intended('/');
     }
 
     public function respondError($message){
-        flash()->error($message);
+//        flash()->error($message);
         return back()->withInput();
     }
 

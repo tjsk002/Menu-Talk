@@ -58,7 +58,7 @@
     </div>
 </nav>
 
-{{--@include('flash::message')--}}
+@include('flash::message')
 @yield('content')
 
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>

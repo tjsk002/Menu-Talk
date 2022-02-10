@@ -167,6 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Laracasts\Flash\FlashServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -226,15 +227,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Flash' => Laracasts\Flash\Flash::class,
+
     ],
-
-//    'provides' => [
-//        Laracasts\Flash\FlashServiceProvider::class,
-//    ],
-//
-//    'aliases' => [
-//        'Flash' => Laracasts\Flash\Flash::class,
-//    ]
-
 
 ];
