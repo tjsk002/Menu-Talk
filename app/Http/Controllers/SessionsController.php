@@ -10,7 +10,7 @@ class SessionsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest',['except'=>'destroy']);
+//        $this->middleware('guest',['except'=>'destroy']);
     }
 
     /**
@@ -24,7 +24,9 @@ class SessionsController extends Controller
      * @param Request $requset
      * @return \Illuminate\Http\RedirectResponse
      */
+
     public function store(Request $request){
+
 
         $this->validate($request, [
             'email'=>'required|email',

@@ -228,4 +228,13 @@ return [
 
     ],
 
+//    'provides' => [
+//        Laracasts\Flash\FlashServiceProvider::class,
+//    ],
+//
+//    'aliases' => [
+//        'Flash' => Laracasts\Flash\Flash::class,
+//    ]
+
+
 ];
