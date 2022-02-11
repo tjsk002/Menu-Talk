@@ -1,0 +1,1 @@
+<p>users/confirm.blade.php</p>
