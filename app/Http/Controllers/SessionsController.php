@@ -48,8 +48,8 @@ class SessionsController extends Controller
          */
         if(!auth()->user()->activated){
             auth()->logout();
-            flash('가입 확인해 주세요.');
-             return back()->withInput();
+            flash('메일에서 가입 확인해 주세요.');
+            return back()->withInput();
         }
 
         flash(auth()->user()->name . '님 환영합니다.');

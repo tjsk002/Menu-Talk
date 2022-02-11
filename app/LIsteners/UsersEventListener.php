@@ -32,6 +32,7 @@ class UsersEventListener{
      * @return void
      * 이벤트 구독자에 이벤트를 등록하고 소비하자
      */
+
     public function onPasswordRemindCreated(\App\Events\PasswordRemindCreated $events){
         \Mail::send('emails.passwords.reset',
             ['token'=>$events->token],

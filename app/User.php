@@ -29,8 +29,7 @@ class User extends Authenticatable
      */
     protected $hidden = [
         // 프로퍼티 값을 은닉하는 방법 -> hidden
-        'password', 'confirm_code'
-//        'remember_token',
+        'password', 'confirm_code','remember_token',
 //        'confirm_code', '...'
     ];
 
