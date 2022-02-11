@@ -49,19 +49,18 @@ class UsersController extends Controller
         auth()->login($user);
         flash(auth()->user()->name . '님 환영합니다.');
 
-
         /**
          * 이메일 보내기 추출 -> 컨트롤러에서 가입 확인 메일을 보내지말고, 이벤트를 던져 이벤트 리스너에서 메일을 보낸다
          */
 
-        event(new \App\Events\UserCreated($user));
-//        \Mail::send('emails.auth.confirm',compact('user'), function ($message)use($user){
 //        event(new \App\Events\UserCreated($user));
-//            $message->to($user -> email);
-//            $message->subject(
-//                sprintf('[%s    회원가입을 확인해 주세요.]', config('app.name'))
-//            );
-//        });
+        \Mail::send('emails.auth.confirm',compact('user'), function ($message)use($user){
+        event(new \App\Events\UserCreated($user));
+            $message->to($user -> email);
+            $message->subject(
+                sprintf('[%s 회원가입을 확인해 주세요.]', config('app.name'))
+            );
+        });
 
         return $this->respondCreated('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
 //        flash('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');

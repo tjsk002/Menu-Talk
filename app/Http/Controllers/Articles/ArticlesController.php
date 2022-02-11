@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Articles;
 
-//use App\Http\Controllers\Controller;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Articles;
 use Illuminate\Http\Request;
@@ -26,15 +25,19 @@ class ArticlesController extends Controller
 //        parent::__construct();
 //    }
 
+    public function show(\App\Article $article)
+    {
+        return view('articles.show', compact('article'));
+    }
 
     public function index()
     {
 //        $articles = \App\Article::get();
         // __METHOD__ Article 컬렉션을 조회
 //        $articles = Articles::with('comments', /'author')->latest()->paginate(2);
-        $articles = Articles::where('id', '1')->first();
-        return view('articles.index', compact('articles'));
-//        return view('articles.index');
+//        $articles = Articles::where('id', '1')->first();
+//        return view('articles.index', compact('article'));
+        return view('articles.index');
     }
 
     /**
@@ -70,7 +73,6 @@ class ArticlesController extends Controller
 //        // 다음 기본키를 가진 article 모델을 조회한다
 //        return view('articles.show', compact('articles'));
 //    }
-
 
 
     /**

@@ -19,18 +19,18 @@
                 </thead>
                 <tbody>
                 <article>
-                    @forelse($articles as $articles)
-                        @include('$articles.partial.articles', ['articles => $articles'])
-                    @empty
-                        <p>{{trans('errors.not_found_description')}}</p>
-                    @endforelse
+{{--                    @forelse($articles as $articles)--}}
+{{--                        @include('$articles.partial.articles', ['articles => $articles'])--}}
+{{--                    @empty--}}
+{{--                        <p>{{trans('errors.not_found_description')}}</p>--}}
+{{--                    @endforelse--}}
                     <div>
 {{--                        {!! $articles->appends(Request::except('page'))->render() !!}--}}
                     </div>
                 </article>
                 <tr>
                     <td><a href="#">1</a></td>
-                    <td><a href="#">{{$article->title}}</a></td>
+                    <td><a href="#"></a></td>
                     <td>
                         <a href="#">
 {{--                            {{$tag->name}}--}}
