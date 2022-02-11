@@ -102,6 +102,11 @@ Route::get('auth/confirm/{code}',[
 ])->where('code','[\pL-\pN]{60}');
 // 60바이트 활성화 코드로 사용자를 찾은 후, 활성화 코드는 지우고 가입 확인 여부 열은 1로 바꾼다
 
+Route::get('remind/create',[
+    'as' => 'remind.create',
+    'uses' => 'RemindController@create',
+]);
+
 /*사용자 인증*/
 Route::get('auth/login',[
     'as' => 'sessions.create',
@@ -117,23 +122,25 @@ Route::get('auth/logout',[
 ]);
 
 /*비밀번호 초기화*/
-//Route::get('auth/remind',[
-//    'as' => 'remind.store',
-//    'uses' => 'PasswordsController@getRemind',
-//]);
-//
-//Route::post('auth/remind',[
-//    'as' => 'remind.store',
-//    'uses' => 'PasswordsController@postRemind',
-//]);
-//Route::get('auth/reset/{token}',[
-//    'as' => 'reset.create',
-//    'uses' => 'PasswordsController@getReset',
-//]);
-//Route::post('auth/reset',[
-//    'as' => 'reset.store',
-//    'uses' => 'PasswordsController@getReset',
-//]);
+Route::get('auth/remind',[
+    'as' => 'remind.store',
+    'uses' => 'PasswordsController@getRemind',
+]);
+
+Route::post('auth/remind',[
+    'as' => 'remind.store',
+    'uses' => 'PasswordsController@postRemind',
+]);
+Route::get('auth/reset/{token}',[
+    'as' => 'reset.create',
+    'uses' => 'PasswordsController@getReset',
+])->where('token', '[\pL-\pN]{64}');
+// where('token', '[\pL-\pN]{64}'); 비밀번호 바꾸기 폼 -> 라우트 보호하기
+
+Route::post('auth/reset',[
+    'as' => 'reset.store',
+    'uses' => 'PasswordsController@getReset',
+]);
 
 
 //Route::post('admin/login', function(Request $req){
@@ -191,3 +198,7 @@ Route::get('auth/logout',[
 // end
 
 //Route::get('/', 'Home\Home2Controller@home')->name('home2');
+
+//Auth::routes();
+
+//Route::get('/home', 'HomeController@index')->name('home');

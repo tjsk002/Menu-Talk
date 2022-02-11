@@ -8,7 +8,7 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('guest');
+//       $this->middleware('guest');
     }
 
     public function create()
@@ -62,9 +62,9 @@ class UsersController extends Controller
             );
         });
 
-        return $this->respondCreated('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
-//        flash('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
-//        return redirect('/');
+//        return $this->respondCreated('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
+        flash('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
+        return redirect('/');
 
 //        auth()->login($user);
         // 생성한 사용자 객체로 로그인한

@@ -10,7 +10,7 @@ class SessionsController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware('guest',['except'=>'destroy']);
+//        $this->middleware('a',['except'=>'destroy']);
     }
 
     /**
@@ -29,7 +29,7 @@ class SessionsController extends Controller
 //        flash('s');
 //        dump('1'); exit;
         $this->validate($request, [
-            'email'=>'required|email',
+            'email'=>'required|email|regex:/(.+)@(.+)\.(.+)/i',
             'password'=>'required|min:2'
         ]);
 
@@ -40,6 +40,7 @@ class SessionsController extends Controller
 //            return back()->withInput();
             return $this->respondError('이메일 또는 비밀번호가 맞지 않습니다.');
         }
+        // @를 포항해주세요.
 
         /**
          * 가입 확인을 하지 않은 사용자를 검사
@@ -48,8 +49,7 @@ class SessionsController extends Controller
         if(!auth()->user()->activated){
             auth()->logout();
             flash('가입 확인해 주세요.');
-
-            return back()->withInput();
+             return back()->withInput();
         }
 
         flash(auth()->user()->name . '님 환영합니다.');
