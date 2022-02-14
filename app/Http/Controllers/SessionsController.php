@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 
 class SessionsController extends Controller
 {
+    /**
+     * 로그인/로그아웃
+     */
     public function __construct()
     {
 //        $this->middleware('a',['except'=>'destroy']);
@@ -26,21 +29,24 @@ class SessionsController extends Controller
      */
 
     public function store(Request $request){
-//        flash('s');
-//        dump('1'); exit;
         $this->validate($request, [
             'email'=>'required|email|regex:/(.+)@(.+)\.(.+)/i',
             'password'=>'required|min:2'
         ]);
 
-//        if(!auth()->attempt($request->only('email','password'),$request->has('remember'))){
+//        try {
+//            flash('이메일 또는 비밀번호가 맞지 않습니다. 다시 확인해 주세요.');
+//        }catch (\Exception $e){
+//
+//        }
 
-        if(!auth()->attempt($request->only('email','password'))){
+        if(!auth()->attempt($request->only('email','password'),$request->has('remember'))){
+//            var_dump($this->respondError('이메일 또는 비밀번호가 맞지 않습니다.')); exit();
+//        if(!auth()->attempt($request->only('email','password'))){
             flash('이메일 또는 비밀번호가 맞지 않습니다');
-//            return back()->withInput();
-            return $this->respondError('이메일 또는 비밀번호가 맞지 않습니다.');
+            return back()->withInput();
+//            return $this->respondError('이메일 또는 비밀번호가 맞지 않습니다.');
         }
-        // @를 포항해주세요.
 
         /**
          * 가입 확인을 하지 않은 사용자를 검사

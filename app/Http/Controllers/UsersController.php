@@ -6,9 +6,13 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    /**
+     * 사용자 등록
+     */
     public function __construct()
     {
-//       $this->middleware('guest');
+       $this->middleware('guest')->except('logout');
+       // except logout 제외
     }
 
     public function create()
@@ -32,7 +36,10 @@ class UsersController extends Controller
             // confirmed -> 검사할 필드의 값과 검사할 필드_confirmed 같아야한다
         ]);
 
-        $confirmCode = str_random(60);
+
+
+
+       $confirmCode = str_random(60);
 //        var_dump(1); exit();
 //        flash('111');
 

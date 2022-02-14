@@ -35,6 +35,7 @@
             <li><a href="{{route('home2')}}">메인</a></li>
             <li><a href="{{route('index')}}">게시판</a></li>
         </ul>
+        @if(auth()->guest())
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown"><a href="#" class="dropdown-toggle"
                                     data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -45,7 +46,7 @@
                 </ul>
             </li>
         </ul>
-        @auth('users')
+        @elseif(auth()->user())
         <ul class="nav navbar-nav navbar-right">
             <li class="dropdown"><a href="#" class="dropdown-toggle"
                                     data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -55,7 +56,7 @@
                 </ul>
             </li>
         </ul>
-        @endauth
+        @endif
     </div>
 </nav>
 
