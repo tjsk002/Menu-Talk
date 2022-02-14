@@ -12,7 +12,7 @@ class PasswordsController extends Controller
 
     public function __construct()
     {
-//        $this->middleware('guest');
+        $this->middleware('guest');
     }
 
     public function getRemind()
@@ -22,6 +22,7 @@ class PasswordsController extends Controller
 
     public function postRemind(Request $request)
     {
+        // 토큰을 저장할 테이블 열이 필요한데, 라라벨에 기본 내장된 password_resets 테이블(마이그레이션)을 그대로 사용한다
         // 비밀 번호 바꾸기 신청 처리
         $this->validate($request,['email'=>'required|email|exists:authors']);
         // 폼에서 넘겨 받은 email 필드 값이 users.email 열에 이미 있는 값이어야 한다

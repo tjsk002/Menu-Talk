@@ -35,10 +35,6 @@ class UsersController extends Controller
 //            'business_number' => 'required|min:10|max:12'
             // confirmed -> 검사할 필드의 값과 검사할 필드_confirmed 같아야한다
         ]);
-
-
-
-
        $confirmCode = str_random(60);
 //        var_dump(1); exit();
 //        flash('111');
@@ -60,18 +56,18 @@ class UsersController extends Controller
          * 이메일 보내기 추출 -> 컨트롤러에서 가입 확인 메일을 보내지말고, 이벤트를 던져 이벤트 리스너에서 메일을 보낸다
          */
 
-//        event(new \App\Events\UserCreated($user));
-        \Mail::send('emails.auth.confirm',compact('user'), function ($message)use($user){
         event(new \App\Events\UserCreated($user));
-            $message->to($user -> email);
-            $message->subject(
-                sprintf('[%s 회원가입을 확인해 주세요.]', config('app.name'))
-            );
-        });
+//        \Mail::send('emails.auth.confirm',compact('user'), function ($message)use($user){
+//        event(new \App\Events\UserCreated($user));
+//            $message->to($user -> email);
+//            $message->subject(
+//                sprintf('[%s 회원가입을 확인해 주세요.]', config('app.name'))
+//            );
+//        });
 
-//        return $this->respondCreated('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
-        flash('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
-        return redirect('/');
+        return $this->respondCreated('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
+//        flash('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
+//        return redirect('/');
 
 //        auth()->login($user);
         // 생성한 사용자 객체로 로그인한

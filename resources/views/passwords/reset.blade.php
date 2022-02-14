@@ -1,2 +1,2 @@
 <p>reset</p>
-<input type="hidden" name="token" value="{{$token}}">
+<input type="" name="token" value="{{$token}}">

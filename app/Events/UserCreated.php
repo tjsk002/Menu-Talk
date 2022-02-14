@@ -16,7 +16,8 @@ class UserCreated
 
     /**
      * Create a new event instance.
-     *
+     *  이메일 보내기 추출
+     *  -> 컨트롤러에서 가입 확인 메일 보내지 말고, 이벤트를 던져서 이벤트 리스너에서 메일을 보내자
      * @return void
      */
 
