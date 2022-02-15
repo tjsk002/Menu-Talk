@@ -15,13 +15,21 @@ class PasswordsController extends Controller
         $this->middleware('guest');
     }
 
+//    public function store(Request $request){
+//        return redirect()->intended('/');
+//    }
+
     public function getRemind()
     {
+        /*
+         *  로그인 전 비밀번호 찾기/변경 페이지 로드
+         */
         return view('passwords.remind');
     }
 
     public function postRemind(Request $request)
     {
+        var_dump(1); exit();
         // 토큰을 저장할 테이블 열이 필요한데, 라라벨에 기본 내장된 password_resets 테이블(마이그레이션)을 그대로 사용한다
         // 비밀 번호 바꾸기 신청 처리
         $this->validate($request,['email'=>'required|email|exists:authors']);
@@ -48,7 +56,7 @@ class PasswordsController extends Controller
         event(new \App\Events\PasswordRemindCreated($email, $token));
 
         flash('비밀번호를 바꾸는 방법을 담은 이메일을 발송하였습니다. 메일박스를 확인해 주세요.');
-        return redirect('/');
+        return redirect()->intended('/');
     }
 
     public function getReset($token = null){

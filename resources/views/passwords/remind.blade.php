@@ -1,24 +1,74 @@
-@extends('layouts.layout')
-@section('content')
-    <style>
-        .loginText a {
-            font-size: 15px;
-        }
-    </style>
-    <div class="container">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4">
-            <div class="jumbotron" style="padding-top: 20px;">
-                <form method="post" action="{{route('remind.store')}}" role="form">
-                                        {!! csrf_field() !!}
+{{--@extends('layouts.layout')--}}
 
-                    <h3 style="text-align: center;">비밀번호 찾기</h3>
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="{{trans('auth.form.email')}}" value="{{old('email')}}" autofocus>
+{{--@section('content')--}}
+{{--    <form action="{{ route('remind.store') }}" method="POST" role="form" class="form__auth">--}}
+{{--        {!! csrf_field() !!}--}}
+
+{{--        <div class="page-header">--}}
+{{--            <h4>--}}
+{{--                {{ trans('auth.passwords.title_reminder') }}--}}
+{{--            </h4>--}}
+{{--            <p class="text-muted">--}}
+{{--                {{ trans('auth.passwords.desc_reminder') }}--}}
+{{--            </p>--}}
+{{--        </div>--}}
+
+{{--        <div class="form-group">--}}
+{{--            <input type="email" name="email" class="form-control" placeholder="{{ trans('auth.form.email') }}" value="{{ old('email') }}" autofocus>--}}
+{{--            {!! $errors->first('email', '<span class="form-error">:message</span>') !!}--}}
+{{--        </div>--}}
+
+{{--        <button class="btn btn-primary btn-lg btn-block" type="submit">--}}
+{{--            {{ trans('auth.passwords.send_reminder') }}--}}
+{{--        </button>--}}
+{{--    </form>--}}
+{{--@stop--}}
+
+@extends('layouts.layout')
+{{--<p>remind.blade.php</p>--}}
+{{--로그인 하기 전 비밀번호 찾기 -> 비밀번호를 잊으셨나요? 클릭 후--}}
+@section('content')
+<form action="{{ route('remind.store') }}" method="POST" role="form" class="form__auth">
+    {!! csrf_field() !!}--}}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">비밀번호 찾기/변경</div>
+
+                    <div class="panel-body">
+                        <form class="form-horizontal" method="POST" action="#">
+
+                                <label>
+                                    비밀번호를 잊으셨나요? 메일을 통해 본인인증 후 비밀번호를 변경해주세요.
+                                </label>
+
+
+                            <div class="form-group">
+                                <label for="name" class="col-md-4 control-label">Name</label>
+
+                                <div class="col-md-6">
+                                    <input id="name" type="text" class="form-control" name="name" placeholder="이름"
+                                           required>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control" name="email"
+                                           value="회원가입 할 때 사용한 이메일 주소"
+                                           required autofocus>
+                                </div>
+                            </div>
+                            <input type="submit" name="mail" class="btn btn-primary form-control"
+                                   value="메일 전송으로 비밀번호 변경">
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-        <div class="col-lg-4"></div>
     </div>
+</form>
 @endsection

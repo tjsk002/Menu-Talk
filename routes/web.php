@@ -102,10 +102,6 @@ Route::get('auth/confirm/{code}',[
 ])->where('code','[\pL-\pN]{60}');
 // 60바이트 활성화 코드로 사용자를 찾은 후, 활성화 코드는 지우고 가입 확인 여부 열은 1로 바꾼다
 
-Route::get('remind/create',[
-    'as' => 'remind.create',
-    'uses' => 'RemindController@create',
-]);
 
 /*사용자 인증*/
 Route::get('auth/login',[
@@ -121,9 +117,16 @@ Route::get('auth/logout',[
     'uses' => 'SessionsController@destroy',
 ]);
 
+//Route::get('remind/create',[
+//    'as' => 'remind.create',
+//    'uses' => 'RemindController@create',
+//]);
+
 /*비밀번호 초기화*/
+// as-> 라우트 이름 정의
+
 Route::get('auth/remind',[
-    'as' => 'remind.store',
+    'as' => 'remind.create',
     'uses' => 'PasswordsController@getRemind',
 ]);
 
@@ -131,6 +134,7 @@ Route::post('auth/remind',[
     'as' => 'remind.store',
     'uses' => 'PasswordsController@postRemind',
 ]);
+
 Route::get('auth/reset/{token}',[
     'as' => 'reset.create',
     'uses' => 'PasswordsController@getReset',

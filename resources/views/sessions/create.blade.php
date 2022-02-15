@@ -25,7 +25,7 @@
                         <div class="checkbox">
                             <label>
                                 <input type="checkbox" name="remember" value="{{old('remember',1)}}" checked>
-                                로그인 기억하기
+                                로그인 기억하기<br>
                                 <span class="text-danger">(공용 컴퓨터에서는 사용하지 마세요.)</span>
                             </label>
                         </div>
@@ -35,14 +35,14 @@
 
                     <div class="form-group">
                         <p class="text-center loginText">
-                            회원이 아니라면?
-                                <a href="{{route('users.create')}}">회원가입하러가기</a>
-                        </p>
-                        <p class="text-center loginText">
+                            회원이 아니라면?<br>
+                            <a href="{{route('users.create')}}">회원가입하러가기</a>
+                            <br>
                             <a href="{{route('remind.create')}}">
                                 비밀번호를 잊으셨나요?
                             </a>
                         </p>
+
                     </div>
 
                 </form>
