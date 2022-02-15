@@ -15,10 +15,6 @@ class PasswordsController extends Controller
         $this->middleware('guest');
     }
 
-//    public function store(Request $request){
-//        return redirect()->intended('/');
-//    }
-
     public function getRemind()
     {
         /*
@@ -29,18 +25,18 @@ class PasswordsController extends Controller
 
     public function postRemind(Request $request)
     {
-        var_dump(1); exit();
+        // auth/remind -> 'as' remind.store
         // 토큰을 저장할 테이블 열이 필요한데, 라라벨에 기본 내장된 password_resets 테이블(마이그레이션)을 그대로 사용한다
         // 비밀 번호 바꾸기 신청 처리
-        $this->validate($request,['email'=>'required|email|exists:authors']);
+        $this->validate($request, ['email' => 'required|email|exists:authors']);
         // 폼에서 넘겨 받은 email 필드 값이 users.email 열에 이미 있는 값이어야 한다
         $email = $request->get('email');
         $token = str_random(64);
 
         \DB::table('password_resets')->insert([
-            'email'=>$email,
-            'token'=>$token,
-            'created_at'=>\Carbon\Carbon::now()->toDateString()
+            'email' => $email,
+            'token' => $token,
+            'created_at' => \Carbon\Carbon::now()->toDateString()
 
             // carbon -> (new Datetime)->format('Y-m-d H:i:s') 같이 사용 가능하다
             // 날짜와 시간 값을 편하게 조작할 수 있도록 돕는 외부 컴포넌트이다
@@ -59,29 +55,31 @@ class PasswordsController extends Controller
         return redirect()->intended('/');
     }
 
-    public function getReset($token = null){
-        return view('passwords.reset',compact('token'));
+    public function getReset($token = null)
+    {
+        return view('passwords.reset', compact('token'));
     }
 
 
     /*
      * 비밀번호 바꾸기 처리
      */
-    public function postReset(Request $request){
+    public function postReset(Request $request)
+    {
         $this->validate($request, [
-            'email'=>'required|email|exists:authors',
-            'password'=>'required|confirmed',
-            'token'=>'required'
+            'email' => 'required|email|exists:authors',
+            'password' => 'required|confirmed',
+            'token' => 'required'
         ]);
         $token = $request->get('token');
 
-        if(! \DB::table('password_resets')->whereToken($token)->first()){
+        if (!\DB::table('password_resets')->whereToken($token)->first()) {
             flash('URL이 정확하지 않습니다.');
             return back()->withInput();
         }
 
         \App\User::whereEmail($request->input('email'))->first()->update([
-            'password'=>bcrypt($request->input('password'))
+            'password' => bcrypt($request->input('password'))
         ]);
         \DB::table('password_resets')->whereToken($token)->delete();
 

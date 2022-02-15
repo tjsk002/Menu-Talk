@@ -1,35 +1,8 @@
-{{--@extends('layouts.layout')--}}
-
-{{--@section('content')--}}
-{{--    <form action="{{ route('remind.store') }}" method="POST" role="form" class="form__auth">--}}
-{{--        {!! csrf_field() !!}--}}
-
-{{--        <div class="page-header">--}}
-{{--            <h4>--}}
-{{--                {{ trans('auth.passwords.title_reminder') }}--}}
-{{--            </h4>--}}
-{{--            <p class="text-muted">--}}
-{{--                {{ trans('auth.passwords.desc_reminder') }}--}}
-{{--            </p>--}}
-{{--        </div>--}}
-
-{{--        <div class="form-group">--}}
-{{--            <input type="email" name="email" class="form-control" placeholder="{{ trans('auth.form.email') }}" value="{{ old('email') }}" autofocus>--}}
-{{--            {!! $errors->first('email', '<span class="form-error">:message</span>') !!}--}}
-{{--        </div>--}}
-
-{{--        <button class="btn btn-primary btn-lg btn-block" type="submit">--}}
-{{--            {{ trans('auth.passwords.send_reminder') }}--}}
-{{--        </button>--}}
-{{--    </form>--}}
-{{--@stop--}}
 
 @extends('layouts.layout')
-{{--<p>remind.blade.php</p>--}}
-{{--로그인 하기 전 비밀번호 찾기 -> 비밀번호를 잊으셨나요? 클릭 후--}}
 @section('content')
 <form action="{{ route('remind.store') }}" method="POST" role="form" class="form__auth">
-    {!! csrf_field() !!}--}}
+    {!! csrf_field() !!}
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -38,21 +11,18 @@
 
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" action="#">
-
                                 <label>
                                     비밀번호를 잊으셨나요? 메일을 통해 본인인증 후 비밀번호를 변경해주세요.
                                 </label>
+{{--                            <div class="form-group">--}}
+{{--                                <label for="name" class="col-md-4 control-label">Name</label>--}}
 
+{{--                                <div class="col-md-6">--}}
+{{--                                    <input id="name" type="text" class="form-control" name="name" placeholder="이름"--}}
+{{--                                           required>--}}
 
-                            <div class="form-group">
-                                <label for="name" class="col-md-4 control-label">Name</label>
-
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="name" placeholder="이름"
-                                           required>
-
-                                </div>
-                            </div>
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 

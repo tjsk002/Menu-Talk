@@ -13,7 +13,7 @@ class SessionsController extends Controller
      */
     public function __construct()
     {
-//        $this->middleware('a',['except'=>'destroy']);
+        $this->middleware('guest',['except'=>'destroy']);
     }
 
     /**
