@@ -49,6 +49,9 @@ class ArticlesController extends Controller
     {
         // 컬렉션을 만들기 위한 폼을 담은 뷰를 반환한다
         return view('articles.articleCreate');
+        /**
+         * @create 메서드에서 숨은 필드로 _token 값을 담아 새로운 모델을 만들기 폼을 응답한다
+         */
     }
 
     /**
@@ -59,6 +62,8 @@ class ArticlesController extends Controller
      */
     public function store(Request $request)
     {
+        // csrf token 검사를 통과하면 articlesController@store 메서드에 작업을 위임하고,
+        // 그렇지 않으면 TokenMismatchException을 던진다
         // 사용자의 입력한 폼 데이터로 새로운 article 컬렉션을 만든다
     }
 

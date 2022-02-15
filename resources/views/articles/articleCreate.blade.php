@@ -7,7 +7,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <form method="post" action="#">
+        <form method="post" action="{{route('articles.create')}}">
+            {!! csrf_field() !!}
             <table class="table table-striped"
                    style="text-align: center; border: 1px solid #dddddd;">
                 <thead>
@@ -22,13 +23,13 @@
                 <tr>
                     <td>
                         <input type="text" class="form-control"
-                               placeholder="글 제목" name="bbsTitle" maxlength="50">
+                               placeholder="글 제목" name="title" maxlength="50">
                     </td>
                 </tr>
                 <tr>
                     <td>
 							<textarea class="form-control" placeholder="글 내용"
-                                      name="bbsContent" maxlength="2048" style="height: 350px;">
+                                      name="content" maxlength="2048" style="height: 350px;">
 							</textarea>
                     </td>
                 </tr>
