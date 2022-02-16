@@ -36,8 +36,8 @@ Route::get('/index', 'Articles\ArticlesController@index')
 // 게시판 작성하기
 //Route::get('/articleCreate', 'Articles\ArticlesController@create')
 //    -> name('articleCreate');
-
 Route::resource('articles','Articles\ArticlesController');
+//Route::post('articles','Articles\ArticlesController');
 
 //Auth::routes();
 //Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {

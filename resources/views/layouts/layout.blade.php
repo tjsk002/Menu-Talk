@@ -34,6 +34,11 @@
         <ul class="nav navbar-nav">
             <li><a href="{{route('home2')}}">메인</a></li>
             <li><a href="{{route('index')}}">게시판</a></li>
+            <li>
+                <a href="#" id="button1">스크롤
+{{--                    <button id="button1">스크롤</button>--}}
+                </a>
+            </li>
         </ul>
         @if(auth()->guest())
         <ul class="nav navbar-nav navbar-right">
@@ -64,6 +69,14 @@
 @include('flash::message')
 @yield('content')
 
+<script>
+    const button1 = document.getElementById('button1');
+    const section1 = document.getElementById('section1');
+
+    button1.addEventListener('click', () => {
+        window.scrollBy({top: section1.getBoundingClientRect().top, behavior: 'smooth'});
+    });
+</script>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="/js/bootstrap.js"></script>
 

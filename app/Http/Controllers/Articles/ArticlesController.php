@@ -25,9 +25,9 @@ class ArticlesController extends Controller
 //        parent::__construct();
 //    }
 
-    public function show(\App\Article $article)
+    public function show($id)
     {
-        return view('articles.show', compact('article'));
+        return __METHOD__ . '다음 기본 키를 가진 article 모델을 조회한다.' . $id;
     }
 
     public function index()
@@ -65,6 +65,7 @@ class ArticlesController extends Controller
         // csrf token 검사를 통과하면 articlesController@store 메서드에 작업을 위임하고,
         // 그렇지 않으면 TokenMismatchException을 던진다
         // 사용자의 입력한 폼 데이터로 새로운 article 컬렉션을 만든다
+        return __METHOD__ . '사용자의 입력한 폼 데이터로 새로운 article 컬렉션을 만든다';
     }
 
     /**
@@ -89,6 +90,7 @@ class ArticlesController extends Controller
     public function edit($id)
     {
         // 다음 기본키를 가진 article 모델을 수정하기 위한 폼을 담은 뷰를 반환한다
+        return __METHOD__ . '다음 기본 키를 가진 article 모델을 수정하기 위한 폼을 담은 뷰 반환한다' . $id;
     }
 
     /**
@@ -101,6 +103,7 @@ class ArticlesController extends Controller
     public function update(Request $request, $id)
     {
         // 사용자의 입력한 폼 데이터로 다음 기본 키를 가진 article 모델을 수정한다
+        return __METHOD__ . 'article 모델을 수정한다' . $id;
     }
 
     /**
@@ -112,5 +115,6 @@ class ArticlesController extends Controller
     public function destroy($id)
     {
         // 기본키를 사진 article 모델 삭제한다
+        return __METHOD__ . '기본키를 사진 article 모델 삭제한다' . $id;
     }
 }
