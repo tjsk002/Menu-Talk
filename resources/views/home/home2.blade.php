@@ -47,6 +47,14 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="jumbotron">
+            <div class="container">
+                <h1>.</h1>
+                {{--                    <p class="text-center"><a class="btn btn-primary btn-pull" href="#" role="button">자세히 알아보기</a></p>--}}
+            </div>
+        </div>
+    </div>
     <div class="container" id="section1">
             <div class="jumbotron">
                 <div class="container">
