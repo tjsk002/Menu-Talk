@@ -87,10 +87,11 @@ class ArticlesController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(\App\Articles $article)
     {
         // 다음 기본키를 가진 article 모델을 수정하기 위한 폼을 담은 뷰를 반환한다
-        return __METHOD__ . '다음 기본 키를 가진 article 모델을 수정하기 위한 폼을 담은 뷰 반환한다' . $id;
+//        return __METHOD__ . '다음 기본 키를 가진 article 모델을 수정하기 위한 폼을 담은 뷰 반환한다' . $id;
+        return view('articles.edit', compact('article'));
     }
 
     /**

@@ -14,6 +14,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+    public function getGravatarUrlAttribute(){
+        return sprintf("//www.gravatar.com/avatar/%s?s=%s?", md5($this->email), 48);
+    }
 
     protected $fillable = [
         // id, pw, name, email

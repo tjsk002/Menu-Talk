@@ -30,7 +30,7 @@
                 </article>
                 <tr>
                     <td><a href="#">1</a></td>
-                    <td><a href="#"></a></td>
+                    <td><a href="#">2</a></td>
                     <td>
                         <a href="#">
 {{--                            {{$tag->name}}--}}

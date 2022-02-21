@@ -1,10 +1,9 @@
 
 
 <div class="media">
-{{--    @include('users.partial.avatar',['user'=>$article->user])--}}
+    @include('users.partial.avatar',['user'=>$article->user])
     <div class="media-body">
         <h4 class="media-heading">
-
             {{$article->title}}</h4>
         <p class="text-muted">
             <i class="fa fa-user"></i> {{$article->user->name}}
