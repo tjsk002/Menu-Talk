@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    @php $viewName = 'articles.index'; @endphp
     <div class="container">
         <div class="row">
             <table class="table table-striped"
@@ -29,15 +30,15 @@
                     </div>
                 </article>
                 <tr>
-                    <td><a href="#">1</a></td>
+                    <td><a href="{{route('articles.index')}}">1</a></td>
                     <td><a href="#">2</a></td>
                     <td>
-                        <a href="#">
+{{--                        <a href="#">--}}
 {{--                            {{$tag->name}}--}}
 {{--                            @if ($tagCount = $tag->articles->count())--}}
 {{--                                <span class="badge badge-default">{{ $tagCount }}</span>--}}
 {{--                            @endif--}}
-                        </a>
+{{--                        </a>--}}
                     </td>
                     <td><a href="#">2</a></td>
                 </tr>
