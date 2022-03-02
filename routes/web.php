@@ -30,14 +30,14 @@ Route::get('/', 'Home\Home2Controller@home')
     -> name('home2');
 
 // 게시판 보기
-Route::get('/index', 'Articles\ArticlesController@index')
+Route::get('/index', 'ArticlesController@index')
     -> name('index');
 
 // 게시판 작성하기
 //Route::get('/articleCreate', 'Articles\ArticlesController@create')
 //    -> name('articleCreate');
-Route::resource('articles','Articles\ArticlesController');
-//Route::post('articles','Articles\ArticlesController');
+
+Route::resource('articles','ArticlesController');
 
 //Auth::routes();
 //Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {

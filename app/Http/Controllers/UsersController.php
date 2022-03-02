@@ -36,8 +36,6 @@ class UsersController extends Controller
             // confirmed -> 검사할 필드의 값과 검사할 필드_confirmed 같아야한다
         ]);
        $confirmCode = str_random(60);
-//        var_dump(1); exit();
-//        flash('111');
 
         $user = \App\User::create([
             // DB에 입력한 값 input

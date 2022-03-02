@@ -69,6 +69,13 @@ class SessionsController extends Controller
         return back()->withInput();
     }
 
+    protected function respondCreated($token)
+    {
+        return response()->json([
+            'token' => $token,
+        ], 201, [], JSON_PRETTY_PRINT);
+    }
+
     /**
      * @return \Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * 로그아웃 요청 처리

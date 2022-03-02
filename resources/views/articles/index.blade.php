@@ -19,16 +19,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <article>
-{{--                    @forelse($articles as $articles)--}}
-{{--                        @include('$articles.partial.articles', ['articles => $articles'])--}}
-{{--                    @empty--}}
-{{--                        <p>{{trans('errors.not_found_description')}}</p>--}}
-{{--                    @endforelse--}}
-                    <div>
-{{--                        {!! $articles->appends(Request::except('page'))->render() !!}--}}
-                    </div>
-                </article>
+
                 <tr>
                     <td><a href="{{route('articles.index')}}">1</a></td>
                     <td><a href="#">2</a></td>
@@ -56,7 +47,12 @@
                 </article>
                 </tbody>
             </table>
-
+{{--            @if($articles -> count())--}}
+{{--                <div class="text-center">--}}
+{{--                    {!! $articles->appends(Request::except('page'))->render() !!}--}}
+{{--                </div>--}}
+{{--                --}}
+{{--            @endif--}}
             <a href="#" class="btn btn-success btn-arrow-left">이전</a>
 
             <a href="#"
@@ -64,4 +60,5 @@
             <a href="{{route('articles.create')}}" class="btn btn-primary pull-right">글쓰기</a>
         </div>
     </div>
+
 @endsection

@@ -6,7 +6,7 @@
         </h4>
     </div>
     <article>
-        @include('articles.pertial.article', compact('articles'))
+        @include('articles.partial.article', compact('articles'))
         <p>{!! mardown($article->count) !!}</p>
     </article>
     <div class="text-center action__article">
