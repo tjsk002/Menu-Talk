@@ -3,12 +3,20 @@
 namespace App\Http\Requests;
 //Attachment-> 파일 첨부 기능
 //use App\Attachment;
-//use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Database\Eloquent\Collection;
 
-class ArticlesRequest
-//    extends FormRequestArticlesRequest
+class ArticlesRequest extends FormRequest
 {
+
+    public function authorize(){
+        // 권한
+        return true;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getPayload()
     {
         return array_merge($this->all(), [
@@ -19,5 +27,6 @@ class ArticlesRequest
 
     public function rules()
     {
+        return [];
     }
 }

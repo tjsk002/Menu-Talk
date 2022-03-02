@@ -1,13 +1,27 @@
 @extends('layouts.layout')
 
 @section('headerTitle')
-    <title>게시판 목록</title>
+    <title>게시판 포럼 / 글목록</title>
 @endsection
 
 @section('content')
-    @php $viewName = 'articles.index'; @endphp
+    @php $viewName = 'articles.index';
+    @endphp
+
     <div class="container">
+
+
         <div class="row">
+            <!--정렬 UI-->
+            <div class="btn-group sort__article" style="padding-bottom: 20px">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-sort"></i>
+                    {{ trans('forum.articles.sort') }} 일단 보류
+                    <span class="caret"></span>
+                </button>
+
+            </div>
+
             <table class="table table-striped"
                    style="text-align: center; border: 1px solid #dddddd;">
                 <thead>
@@ -21,30 +35,13 @@
                 <tbody>
 
                 <tr>
-                    <td><a href="{{route('articles.index')}}">1</a></td>
-                    <td><a href="#">2</a></td>
-                    <td>
-{{--                        <a href="#">--}}
-{{--                            {{$tag->name}}--}}
-{{--                            @if ($tagCount = $tag->articles->count())--}}
-{{--                                <span class="badge badge-default">{{ $tagCount }}</span>--}}
-{{--                            @endif--}}
-{{--                        </a>--}}
-                    </td>
-                    <td><a href="#">2</a></td>
+                    @forelse($articles as $article)
+                        @include('$articles.partial.article', compact('article'))
+                    @empty
+                        <td class="text-center text-danger">글이 없습니다.</td>
+                    @endforelse
                 </tr>
-                {{--                <tr>--}}
-                {{--                    @forelse($articles as $article)--}}
-                {{--                        @include('$articles.partial.article', compact('article'))--}}
-                {{--                    @empty--}}
-                {{--                        <td><a href="#">number</a></td>--}}
-                {{--                        --}}{{--                <td><a href="#">{{$article -> title}}</a></td>--}}
-                {{--                        <td><a href="#">title</a></td>--}}
-                {{--                        <td><a href="#">2</a></td>--}}
-                {{--                        <td><a href="#">2</a></td>--}}
-                {{--                    @endforelse--}}
-                {{--                </tr>--}}
-                </article>
+
                 </tbody>
             </table>
 {{--            @if($articles -> count())--}}

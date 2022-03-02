@@ -1,6 +1,6 @@
-@php
-    $size = isset($size) ? $size : 48;
-@endphp
+{{--@php--}}
+{{--    $size = isset($size) ? $size : 48;--}}
+{{--@endphp--}}
 
 @if (isset($user) and $user)
     <a class="pull-left" href="{{\App\gravatar_profile_url($user->email)}}">

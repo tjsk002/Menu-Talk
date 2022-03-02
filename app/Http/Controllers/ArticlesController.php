@@ -7,7 +7,8 @@ use App\Events\ArticlesEvent;
 use App\Http\Requests\ArticlesRequest;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Http\Request;
+
+//use Illuminate\Http\Request;
 use function view;
 
 class ArticlesController extends Controller
@@ -23,7 +24,7 @@ class ArticlesController extends Controller
 //    $allTags란 변수 포험을 위한 모든 뷰 공유
     public function __construct()
     {
-        $this->middleware('auth', ['except'=> ['index', 'show']]);
+        $this->middleware('auth', ['except' => ['index', 'show']]);
 //        $this->middleware('accessible', ['except' => ['index', 'show', 'create']]);
 //        view()-> share('allTags', \App\Tag::with('articles')->get());
 //        parent::__construct();
@@ -32,7 +33,7 @@ class ArticlesController extends Controller
     public function show(Article $article)
     {
 //        return __METHOD__ . '다음 기본 키를 가진 article 모델을 조회한다.' . $id;
-        return view('articles.show',compact('article'));
+        return view('articles.show', compact('article'));
     }
 
     public function index()
@@ -75,12 +76,13 @@ class ArticlesController extends Controller
 
         //auth 미들웨어에는 로그인 하지 않은 사용자가 이 메서드에 들어오는 것을 막아주고, null pointer 예외에 안전하다
         $user = $request->user();
+//        var_dump(\App\User::find(1)->articles()); exit();
         $article = $request->user()->articles()->create($request->getPayload());
 //        return __METHOD__ . '사용자의 입력한 폼 데이터로 새로운 article 컬렉션을 만든다';
 
-        flash('게시글 작성이 완료되었습니다.');
+//        flash('게시글 작성이 완료되었습니다.');
 
-        if(! $article){
+        if (!$article) {
             flash()->error(
 //              trans('forum.articles.error_writing')
                 trans('일단 테스트')
@@ -88,7 +90,10 @@ class ArticlesController extends Controller
             return back()->withInput();
         }
         event(new ArticlesEvent($article));
+
+//        var_dump(1); exit();
 //        return $this->respondCreated($article);
+        return redirect('/');
     }
 
     /**
@@ -143,7 +148,8 @@ class ArticlesController extends Controller
     }
 
 
-    protected function respondCreated($article){
+    protected function respondCreated($article)
+    {
         flash()->success(
             trans('forum.articles.success_writing')
         );

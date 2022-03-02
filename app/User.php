@@ -25,6 +25,10 @@ class User extends Authenticatable
 //        'confirm_code', 'activated', '...'
     ];
 
+//    protected $with = [
+//        'article'
+//    ];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -41,5 +45,10 @@ class User extends Authenticatable
     ];
 
     protected $table = 'authors';
+
+    public function articles(){
+        // 여러개의 article 가지고 있다
+        return $this->hasMany(Article::class);
+    }
 
 }

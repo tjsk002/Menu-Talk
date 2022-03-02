@@ -14,6 +14,7 @@ class Article extends Model
      *
      * @var array
      */
+
     protected $fillable = [
         'title',
         'content',
@@ -54,6 +55,7 @@ class Article extends Model
     /* Relationships */
 
     public function user() {
+        // user 소속이다
         return $this->belongsTo(User::class);
     }
 
