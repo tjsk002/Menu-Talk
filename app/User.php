@@ -41,13 +41,16 @@ class User extends Authenticatable
     ];
 
     protected $casts = [
-        'activated' => 'boolean'
+        'activated' => 'boolean',
+
     ];
 
     protected $table = 'authors';
 
+
     public function articles(){
         // 여러개의 article 가지고 있다
+        var_dump(1);
         return $this->hasMany(Article::class);
     }
 
