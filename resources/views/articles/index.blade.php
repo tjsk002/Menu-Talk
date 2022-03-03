@@ -36,7 +36,13 @@
 
                 <tr>
                     @forelse($articles as $article)
-                        @include('$articles.partial.article', compact('article'))
+                        <li>
+                            {{$article->title}}
+                            <samll>
+{{--                                                                by{{$article->user->name}}--}}
+                            </samll>
+                        </li>
+                        {{--                        @include('$articles.partial.article', compact('article'))--}}
                     @empty
                         <td class="text-center text-danger">글이 없습니다.</td>
                     @endforelse
@@ -44,16 +50,12 @@
 
                 </tbody>
             </table>
-{{--            @if($articles -> count())--}}
-{{--                <div class="text-center">--}}
-{{--                    {!! $articles->appends(Request::except('page'))->render() !!}--}}
-{{--                </div>--}}
-{{--                --}}
-{{--            @endif--}}
-            <a href="#" class="btn btn-success btn-arrow-left">이전</a>
+                        @if($articles -> count())
+                            <div class="text-center">
+                                {!! $articles->appends(Request::except('page'))->render() !!}
+                            </div>
 
-            <a href="#"
-               class="btn btn-success btn-arrow-left">다음</a>
+                        @endif
             <a href="{{route('articles.create')}}" class="btn btn-primary pull-right">글쓰기</a>
         </div>
     </div>

@@ -38,12 +38,16 @@ class ArticlesController extends Controller
 
     public function index()
     {
-//        $articles = \App\Article::get();
+        // 페이지 네이터 latest()
+        $articles = \App\Article::latest()->paginate(10);
+
+//         -> 쿼리 결과를 날짜 역순으로 정렬하는 도우미 메서드 -> orderBy('created_at', 'desc')와 같다
+
         // __METHOD__ Article 컬렉션을 조회
 //        $articles = Articles::with('comments', /'author')->latest()->paginate(2);
 //        $articles = Articles::where('id', '1')->first();
 //        return view('articles.index', compact('article'));
-        return view('articles.index');
+        return view('articles.index',compact('articles'));
     }
 
     /**
@@ -84,6 +88,7 @@ class ArticlesController extends Controller
 
         if (!$article) {
             flash()->error(
+//              trans('forum.articles.error_writing')
 //              trans('forum.articles.error_writing')
                 trans('일단 테스트')
             );

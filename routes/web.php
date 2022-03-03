@@ -12,18 +12,12 @@ use Illuminate\Http\Request;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+DB::listen(function ($query){
+// 이벤트 리스너 -> 데이터 베이스에 이벤트가 발생할 때, 엘로퀀트는 여러가지 이벤트를 던진다
+// 데이터베이스 쿼리를 감시할 수 있는 방법
+    var_dump($query->sql);
+});
 
-// 메인페이지 -> home
-//Route::get('/', function () {
-//    return view('home');
-//});
-
-//Route::get('/', 'Home\HomeController@home')
-////    return view('layouts.header')
-//    -> name('home');
 
 Route::get('/', 'Home\Home2Controller@home')
 //    return view('layouts.header')
