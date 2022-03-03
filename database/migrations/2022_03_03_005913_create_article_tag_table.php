@@ -26,7 +26,7 @@ class CreateArticleTagTable extends Migration
                 ->on('articles')->onDelete('cascade');
             $table->foreign('tags_id')->references('id')
                 ->on('tags')->onDelete('cascade');
-            $table->timestamps();
+//            $table->timestamps();
         });
     }
 
