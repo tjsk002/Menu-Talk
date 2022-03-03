@@ -25,8 +25,36 @@ class ArticlesRequest extends FormRequest
         ]);
     }
 
+    public function store(ArticlesRequest $request){
+
+    }
+
+    /**
+     * @return \string[][]
+     * 폼 퀘스트 클래스 이용
+     */
     public function rules()
     {
-        return [];
+        return [
+            'title'=>['required'],
+            'content'=>['required','min:5'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required'=>':attribute 필수 입력 사항입니다.',
+            'contend'=>':attribute 최소 5글자 이상이 필요합니다.'
+        ];
+
+    }
+
+    public function attributes()
+    {
+        return [
+          'title'=>'제목',
+          'content'=>'본문',
+        ];
     }
 }

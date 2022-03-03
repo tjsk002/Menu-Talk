@@ -77,8 +77,8 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
-
-    'locale' => 'en',
+    //오류 메시지 사용자화 -> 유효성 검사에 실패하여 페이지에서 영어로 된 오류 메시지 -> 한글
+    'locale' => 'ko',
 
     /*
     |--------------------------------------------------------------------------

@@ -47,7 +47,7 @@ class ArticlesController extends Controller
 //        $articles = Articles::with('comments', /'author')->latest()->paginate(2);
 //        $articles = Articles::where('id', '1')->first();
 //        return view('articles.index', compact('article'));
-        return view('articles.index',compact('articles'));
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -81,23 +81,40 @@ class ArticlesController extends Controller
         //auth 미들웨어에는 로그인 하지 않은 사용자가 이 메서드에 들어오는 것을 막아주고, null pointer 예외에 안전하다
         $user = $request->user();
 //        var_dump(\App\User::find(1)->articles()); exit();
-        $article = $request->user()->articles()->create($request->getPayload());
+
 //        return __METHOD__ . '사용자의 입력한 폼 데이터로 새로운 article 컬렉션을 만든다';
 
-            flash('게시글 작성이 완료되었습니다.');
+        $rules = [
+            // 폼이 유효하지 않은 값을 전송했을 때 오류 메시지 표시되고, 직전 입력이 남아있는지 확인한다 (required:필수)
+            'title' => ['required', 'max:255'],
+            'content' => ['required', 'min:5'],
+        ];
 
+        $message = [
+            'title.required' => '제목은 필수 입력 항목입니다.',
+            'content.required' => '본문은 필수 입력 항목입니다.',
+            'content.min' => '본문은 최소 5자 글자 이상 필요합니다.',
+        ];
+
+        $validator = \Validator::make($request->all(), $rules, $message);
+
+        if ($validator->fails()) {
+            // 유효성 검사  -> bool 반환하는데, 유효성 검사를 통과하지 않는다면 true 반환한다
+            return back()->withErrors($validator)
+                ->withInput();
+            // withInput() 폼 데이터를 세션에 굽는 일, 뷰의 old() 함수는 이메서드가 구운 값을 읽는다
+        }
+
+        $article = $request->user()->articles()->create($request->getPayload());
         if (!$article) {
-            flash()->error(
-//              trans('forum.articles.error_writing')
-                trans('일단 테스트')
-            );
-            return back()->withInput();
+            return back()->with('flush_message', '글을 저장되지 않았습니다.')
+                ->withInput();
         }
         event(new ArticlesEvent($article));
 
-//        var_dump(1); exit();
 //        return $this->respondCreated($article);
-        return redirect('/');
+        return redirect(route('articles.index'))
+            ->with('flash_message', '작성하신 글이 저장되었습니다.');
     }
 
     /**
