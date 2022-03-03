@@ -50,5 +50,4 @@ class User extends Authenticatable
         // 여러개의 article 가지고 있다
         return $this->hasMany(Article::class);
     }
-
 }

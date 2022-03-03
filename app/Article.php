@@ -52,9 +52,19 @@ class Article extends Model
 //        'deleted_at'
 //    ];
 
+
+    /**
+     * 만약, authors 외래키로 사용한다고 하면 public function authors(){
+     * return $this->belongTo(User::class, 'author_id')}
+     */
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     /* Relationships */
 
-    public function user() {
+    public function user()
+    {
         // user 소속이다
         return $this->belongsTo(User::class);
     }
