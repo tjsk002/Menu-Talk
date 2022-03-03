@@ -12,13 +12,12 @@ use Illuminate\Http\Request;
 |
 */
 
-DB::listen(function ($query){
-// 이벤트 리스너 -> 데이터 베이스에 이벤트가 발생할 때, 엘로퀀트는 여러가지 이벤트를 던진다
-// 데이터베이스 쿼리를 감시할 수 있는 방법
-    var_dump($query->sql);
+
+
+Event::listen('article.created',function ($article){
+    var_dump('이벤트를 받았습니다. 받은 데이터(상태)는 다음과 같습니다.');
+    var_dump($article->toArray());
 });
-
-
 Route::get('/', 'Home\Home2Controller@home')
 //    return view('layouts.header')
     -> name('home2');
@@ -26,10 +25,6 @@ Route::get('/', 'Home\Home2Controller@home')
 // 게시판 보기
 Route::get('/index', 'ArticlesController@index')
     -> name('index');
-
-// 게시판 작성하기
-//Route::get('/articleCreate', 'Articles\ArticlesController@create')
-//    -> name('articleCreate');
 
 Route::resource('articles','ArticlesController');
 

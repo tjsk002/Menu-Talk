@@ -107,11 +107,14 @@ class ArticlesController extends Controller
 
         $article = $request->user()->articles()->create($request->getPayload());
         if (!$article) {
+
             return back()->with('flush_message', '글을 저장되지 않았습니다.')
                 ->withInput();
         }
-        event(new ArticlesEvent($article));
-
+        var_dump('이벤트를 던져봅니다');
+        event('article.created',[$article]);
+//        event(new ArticlesEvent($article));
+        var_dump('이벤트를 받았습니다.');
 //        return $this->respondCreated($article);
         return redirect(route('articles.index'))
             ->with('flash_message', '작성하신 글이 저장되었습니다.');
