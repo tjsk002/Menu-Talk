@@ -56,7 +56,9 @@
                             </div>
 
                         @endif
+            @if(auth()->user())
             <a href="{{route('articles.create')}}" class="btn btn-primary pull-right">글쓰기</a>
+            @endif
         </div>
     </div>
 

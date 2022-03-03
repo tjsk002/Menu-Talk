@@ -84,11 +84,10 @@ class ArticlesController extends Controller
         $article = $request->user()->articles()->create($request->getPayload());
 //        return __METHOD__ . '사용자의 입력한 폼 데이터로 새로운 article 컬렉션을 만든다';
 
-//        flash('게시글 작성이 완료되었습니다.');
+            flash('게시글 작성이 완료되었습니다.');
 
         if (!$article) {
             flash()->error(
-//              trans('forum.articles.error_writing')
 //              trans('forum.articles.error_writing')
                 trans('일단 테스트')
             );
