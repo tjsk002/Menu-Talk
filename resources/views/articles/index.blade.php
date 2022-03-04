@@ -43,7 +43,7 @@
                             </samll>
                         </li>
 
-                        @include('$articles.partial.article', compact('article'))
+{{--                        @include('$articles.partial.article', compact('article'))--}}
                     @empty
                         <td class="text-center text-danger">글이 없습니다.</td>
                     @endforelse

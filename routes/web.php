@@ -16,10 +16,10 @@ use Illuminate\Http\Request;
 /**
  * 마크다운 해석 및 변환 클래스 / 모델 사용
  */
-Route::get('docs/{file?}', function ($file = null){
-    $text = (new App\Documentation)->get($file);
-    return app(ParsedownExtra::class)->text($text);
-});
+Route::get('docs/{file?}', 'DocsController@show');
+//    $text = (new App\Documentation)->get($file);
+//    return app(ParsedownExtra::class)->text($text);
+
 
 /**
  * 컴포넌트 사용하기
