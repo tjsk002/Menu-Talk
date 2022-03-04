@@ -4,8 +4,14 @@
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
-
+mix.webpack('app.js');
+mix.script([
+    '../../../node_modules/highlights/highlight.pack.js',
+    '../../../public/js/app.js',
+], 'public/js/app.js');
+mix.version();
 require('./bootstrap');
+
 
 window.Vue = require('vue');
 
