@@ -2,13 +2,15 @@
 @section('content')
     <div class="page-header">
         <h4>포럼
-            <small>/ 글 수정 / {{$article->title}}</small>
+            <small>/ 글 수정 /
+                {{--                {{$article->title}}--}}
+            </small>
         </h4>
     </div>
-    <form action="{{route('articles.update', $article->id)}}"
-    method="post">
+    <form action="{{route('articles.update')}}"
+          method="post">
         {!!csrf_token()!!}
-        {
+        {!! method_field('PUT') !!}
 
     </form>
 @endsection

@@ -1,7 +1,7 @@
 
 
 <div class="media">
-    @include('users.partial.avatar', ['user' => $article->user])
+    @include('articles.partial.avatar', ['user' => $article->user])
 
     <div class="media-body">
         <h4 class="media-heading">
@@ -11,7 +11,7 @@
         </h4>
 
         <p class="text-muted meta__article">
-            <a href="{{ gravatar_profile_url($article->user->email) }}">
+            <a href="{{ \App\gravatar_profile_url($article->user->email) }}">
                 {{ $article->user->name }}
             </a>
 
@@ -50,4 +50,3 @@
 {{--</td>--}}
 {{--<td><a href="{{route('articles.index')}}">{{auth()->user()->created_at}}</a></td>--}}
 {{--</tr>--}}
---}}

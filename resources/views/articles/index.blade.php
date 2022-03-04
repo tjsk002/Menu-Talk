@@ -24,14 +24,16 @@
 
             <table class="table table-striped"
                    style="text-align: center; border: 1px solid #dddddd;">
-                <thead>
-                <tr>
-                    <th style="background-color: #eeeeee; text-align: center;">번호</th>
-                    <th style="background-color: #eeeeee; text-align: center;">제목</th>
-                    <th style="background-color: #eeeeee; text-align: center;">작성자</th>
-                    <th style="background-color: #eeeeee; text-align: center;">작성일</th>
-                </tr>
-                </thead>
+{{--                <thead>--}}
+{{--                <tr>--}}
+{{--                    <th style="background-color: #eeeeee; text-align: center;">번호</th>--}}
+{{--                    <th style="background-color: #eeeeee; text-align: center;">제목</th>--}}
+{{--                    <th style="background-color: #eeeeee; text-align: center;">작성자</th>--}}
+{{--                    <th style="background-color: #eeeeee; text-align: center;">작성일</th>--}}
+{{--                </tr>--}}
+{{--                </thead>--}}
+
+
                 <tbody>
 
                 <tr>
@@ -42,8 +44,7 @@
                                 {{--                                                                by{{$article->user->name}}--}}
                             </samll>
                         </li>
-
-{{--                        @include('$articles.partial.article', compact('article'))--}}
+                        @include('articles.partial.article', compact('article'))
                     @empty
                         <td class="text-center text-danger">글이 없습니다.</td>
                     @endforelse
