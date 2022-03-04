@@ -41,9 +41,11 @@ class ArticlesController extends Controller
 
     public function index()
     {
-        // 페이지 네이터 latest()
-        $articles = \App\Article::latest()->paginate(10);
 
+        // 페이지 네이터 latest()
+         $articles = \App\Article::latest()->paginate(10);
+         dd(view('articles.index', compact('articles'))->render());
+         // render -> html 소스 코드를 보여준다
 //         -> 쿼리 결과를 날짜 역순으로 정렬하는 도우미 메서드 -> orderBy('created_at', 'desc')와 같다
 
         // __METHOD__ Article 컬렉션을 조회
