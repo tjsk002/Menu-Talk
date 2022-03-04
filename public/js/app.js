@@ -43657,7 +43657,8 @@ var CodegenState = function CodegenState (options) {
 
 
 
-function generate (
+function
+generate (
   ast,
   options
 ) {

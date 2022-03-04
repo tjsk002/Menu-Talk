@@ -9,6 +9,7 @@ use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 
 //use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use function view;
 
 class ArticlesController extends Controller
@@ -30,10 +31,12 @@ class ArticlesController extends Controller
 //        parent::__construct();
     }
 
-    public function show(Article $article)
+    public function show($id)
     {
 //        return __METHOD__ . '다음 기본 키를 가진 article 모델을 조회한다.' . $id;
-        return view('articles.show', compact('article'));
+//        return view('articles.show', compact('article'));
+        $article = \App\Article::findOrFail($id);
+        return $article->toArray();
     }
 
     public function index()
@@ -105,16 +108,15 @@ class ArticlesController extends Controller
             // withInput() 폼 데이터를 세션에 굽는 일, 뷰의 old() 함수는 이메서드가 구운 값을 읽는다
         }
 
-        $article = $request->user()->articles()->create($request->getPayload());
+//        $article = $request->user()->articles()->create($request->getPayload());
+         $article = \App\User::find(1)->articles()->create($request->all());
         if (!$article) {
-
             return back()->with('flush_message', '글을 저장되지 않았습니다.')
                 ->withInput();
         }
-        var_dump('이벤트를 던져봅니다');
-        event('article.created',[$article]);
-//        event(new ArticlesEvent($article));
-        var_dump('이벤트를 받았습니다.');
+        dump('이벤트를 던져봅니다');
+        event(new \App\Events\ArticlesCreated($article));
+        dump('이벤트를 받았습니다.');
 //        return $this->respondCreated($article);
         return redirect(route('articles.index'))
             ->with('flash_message', '작성하신 글이 저장되었습니다.');

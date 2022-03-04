@@ -8,6 +8,13 @@ use Illuminate\Support\Facades\Request;
  * 이벤트 구독자 구현
  */
 class UsersEventListener{
+
+    public function handle(Login $event){
+        $event->user->last_login = \Carbon\Carbon::now();
+        return $event->user->save();
+    }
+
+
     /**
      * @param \Illminate\Events\Dispatcher $events
      * @return void

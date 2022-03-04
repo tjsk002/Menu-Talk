@@ -34,9 +34,10 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return void
      */
-    public function report(Exception $exception)
+    public function report(Exception $e)
     {
-        parent::report($exception);
+        // 로그에 예외를 기록
+        parent::report($e);
     }
 
     /**
@@ -48,6 +49,15 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if(app()->environment('production')){
+            if($exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException){
+                return response(view('errors.notice',[
+                    'title'=>'찾을 수 없습니다.',
+                    'description'=>'죄송합니다 요청하신 페이지가 없습니다.'
+                ]), 404);
+            }
+        }
+        // render -> 예외를 화면에 표시하는 메서드
         return parent::render($request, $exception);
     }
 }

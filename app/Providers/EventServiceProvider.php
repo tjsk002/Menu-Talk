@@ -17,6 +17,12 @@ class EventServiceProvider extends ServiceProvider
     ];
 
     protected $listen = [
+        //리스너 선언을 순회하면서 등록한다
+        \App\Events\ArticlesEvent::class => [
+            \App\Listeners\ArticlesEventListener::class,
+        ],
+
+
 //        \Illuminate\Auth\Events\Login::class => [
 //            \App\Listeners\UsersEventListener::class,
 //        ],
@@ -31,14 +37,18 @@ class EventServiceProvider extends ServiceProvider
 //        ],
     ];
 
-    public function boot(){
+    public function boot()
+    {
 //        parent::boot();
         // 이벤트 리스너 -> 데이터 베이스에 이벤트가 발생할 때, 엘로퀀트는 여러가지 이벤트를 던진다
         // 데이터베이스 쿼리를 감시할 수 있는 방법
-        \Event::listen(
-            'article.created',
-            function($article){
-            \App\Listeners\ArticlesEventListener::class;
-        });
+//        \Event::listen(
+//            'article.created',
+//            function ($article) {
+//                \App\Listeners\ArticlesEventListener::class;
+//            }
+//            \App\Events\ArticlesCreated::class,
+//            \App\Listeners\ArticlesEventListener::class
+//        );
     }
 }
