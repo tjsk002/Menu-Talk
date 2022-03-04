@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 
 //use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use function Psy\debug;
 use function view;
 
 class ArticlesController extends Controller
@@ -33,18 +34,20 @@ class ArticlesController extends Controller
 
     public function show($id)
     {
+        //\App\Article $article
 //        return __METHOD__ . '다음 기본 키를 가진 article 모델을 조회한다.' . $id;
-//        return view('articles.show', compact('article'));
         $article = \App\Article::findOrFail($id);
-        return $article->toArray();
+        dd($article->toArray());
+        return view('articles.show', compact('article'));
+
+//        return $article->toArray();
     }
 
     public function index()
     {
-
         // 페이지 네이터 latest()
          $articles = \App\Article::latest()->paginate(10);
-         dd(view('articles.index', compact('articles'))->render());
+//         dd(view('articles.index', compact('articles'))->render());
          // render -> html 소스 코드를 보여준다
 //         -> 쿼리 결과를 날짜 역순으로 정렬하는 도우미 메서드 -> orderBy('created_at', 'desc')와 같다
 

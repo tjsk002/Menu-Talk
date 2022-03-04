@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        // 어디서든 서비스 프로바이더를 등록할 수 있다
+        if ($this->app->environment('local')) {
+            $this->app->register(ServiceProvider::class);
+        }
     }
 }

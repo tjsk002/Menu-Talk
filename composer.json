@@ -6,6 +6,7 @@
     "type": "project",
     "require": {
         "php": ">=7.0.0",
+        "erusev/parsedown-extra": " ~0.7.1",
         "fideloper/proxy": "~3.3",
         "laracasts/flash": " 2.0.*",
         "laravel/framework": "5.5.*",
@@ -35,6 +36,9 @@
     "extra": {
         "laravel": {
             "dont-discover": [
+            ],
+            "providers": [
+                "Laravel\\Tinker\\TinkerServiceProvider"
             ]
         }
     },

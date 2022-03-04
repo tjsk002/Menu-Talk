@@ -178,6 +178,16 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /**
+         * Laravel 5.5는 패키지 자동 검색을 사용하므로 ServiceProvider를 수동으로 추가할 필요가 없다.
+         * providers -> 사용자인증, 쿠키, 메일 등 라라벨 팀이 개발한 서비스 프로바이더가 이미 등록되어있다.
+         * 라라벨용 서비스 프로바이더를 제공한다.
+         * 디버그 바가 동작하기 위해 필요한 사전 작업을 미리 정의해 놓은 파일이다.
+         * config/app.php -> 라라벨 전역 서비스 프로바이더 레스트리
+         *
+         * -> 서비스 프로바이더를 추가해준다.
+         */
+//        Barryvdh\Debugbar\ServiceProvider::class,
     ],
 
     /*

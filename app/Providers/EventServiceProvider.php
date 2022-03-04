@@ -22,7 +22,6 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\ArticlesEventListener::class,
         ],
 
-
 //        \Illuminate\Auth\Events\Login::class => [
 //            \App\Listeners\UsersEventListener::class,
 //        ],
