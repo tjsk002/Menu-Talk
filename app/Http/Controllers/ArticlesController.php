@@ -37,7 +37,7 @@ class ArticlesController extends Controller
         //\App\Article $article
 //        return __METHOD__ . '다음 기본 키를 가진 article 모델을 조회한다.' . $id;
         $article = \App\Article::findOrFail($id);
-//        dd($article->toArray());
+        dd($article->toArray());
         return view('articles.show', compact('article'));
 
 //        return $article->toArray();
