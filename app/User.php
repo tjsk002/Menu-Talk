@@ -23,10 +23,7 @@ class User extends Authenticatable
     }
 
     protected $fillable = [
-        // id, pw, name, email
         'name', 'email', 'password', 'confirm_code'
-//        'businessNumber'
-//        'confirm_code', 'activated', '...'
     ];
 
 //    protected $with = [
