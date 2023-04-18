@@ -26,7 +26,7 @@
                             <label>
                                 <input type="checkbox" name="remember" value="{{old('remember',1)}}" checked>
                                 로그인 기억하기<br>
-                                <span class="text-danger">(공용 컴퓨터에서는 사용하지 마세요.)</span>
+                                <span class="text-danger">(주의 공용 컴퓨터에서는 사용하지 마세요.)</span>
                             </label>
                         </div>
                     </div>
