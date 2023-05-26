@@ -37,7 +37,7 @@ class SessionsController extends Controller
 //        try {
 //            flash('이메일 또는 비밀번호가 맞지 않습니다. 다시 확인해 주세요.');
 //        }catch (\Exception $e){
-//
+//          throw new Exception('Email Password Error '.$e);
 //        }
 
         if(!auth()->attempt($request->only('email','password'),$request->has('remember'))){
