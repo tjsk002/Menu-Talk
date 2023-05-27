@@ -59,7 +59,6 @@ class SessionsController extends Controller
         }
 
         flash(auth()->user()->name . '님 환영합니다.');
-//        dump('2'); exit;
         return redirect()->intended('/');
         // 'auth' 미들웨어가 작동해서 로그인 페이지로 들어왔을 때, intended 메서드는 사용자가 원래 접근하려고 했던 url 리디렉션 해준다
     }
