@@ -83,7 +83,6 @@ class SessionsController extends Controller
     {
         auth()->logout();
         flash('로그아웃되었습니다.');
-
         return redirect('/');
     }
 }
