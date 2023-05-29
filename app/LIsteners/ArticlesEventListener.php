@@ -25,7 +25,6 @@ class ArticlesEventListener
      */
     public function handle(\App\Events\ArticlesCreated $event)
     {
-        //
         var_dump('이벤트를 받았습니다. 받은 데이터 상태는 다음과 같습니다.');
         var_dump($event->article->toArray());
 
