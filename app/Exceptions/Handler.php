@@ -59,6 +59,7 @@ class Handler extends ExceptionHandler
                 $statusCode = 404;
                 $description = $exception->getMessage() ?: '요청하신 페이지가 없습니다.';
             }
+
             return response(view('errors.notice',[
                 'title'=>$title,
                 'description'=>$description,
