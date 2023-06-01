@@ -41,6 +41,4 @@ class ArticlesCreated
     {
         return new PrivateChannel('channel-name');
     }
-
-
 }
