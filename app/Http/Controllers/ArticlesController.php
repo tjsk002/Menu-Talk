@@ -133,7 +133,6 @@ class ArticlesController extends Controller
 //        return view('articles.show', compact('articles'));
 //    }
 
-
     /**
      * Show the form for editing the specified resource.
      *
