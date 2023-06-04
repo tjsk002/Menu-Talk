@@ -60,7 +60,6 @@ class PasswordsController extends Controller
         return view('passwords.reset', compact('token'));
     }
 
-
     /*
      * 비밀번호 바꾸기 처리
      */
