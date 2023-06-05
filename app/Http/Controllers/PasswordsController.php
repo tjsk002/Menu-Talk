@@ -71,7 +71,6 @@ class PasswordsController extends Controller
             'token' => 'required'
         ]);
         $token = $request->get('token');
-
         if (!\DB::table('password_resets')->whereToken($token)->first()) {
             flash('URL이 정확하지 않습니다.');
             return back()->withInput();
