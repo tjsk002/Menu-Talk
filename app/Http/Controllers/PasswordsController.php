@@ -80,7 +80,6 @@ class PasswordsController extends Controller
             'password' => bcrypt($request->input('password'))
         ]);
         \DB::table('password_resets')->whereToken($token)->delete();
-
         flash('비밀번호 변경이 완료되었습니다. 새로운 비밀번호로 로그인 하세요.');
         return redirect('/');
     }
