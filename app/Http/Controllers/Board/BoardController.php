@@ -33,5 +33,4 @@ class BoardController
         return view('admin.board.boards');
     }
 }
-
 ?>
