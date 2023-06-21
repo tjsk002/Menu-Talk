@@ -11,7 +11,6 @@ class BoardController
     {
         return view('board.board');
     }
-
     public function write(Request $request)
     {
         return view('board.boardWrite');
