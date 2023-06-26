@@ -30,7 +30,6 @@
 {{--                                    <img src="images/img3.jpg" style="width: 100%">--}}
 {{--                </div>--}}
 {{--            </div>--}}
-
             <!-- 스틸컷 넘기는 버튼 -->
 {{--            <a class="left carousel-control" href="#myCarousel" data-slide="prev">--}}
 {{--                <span class="glyphicon glyphicon-chevron-left"></span>--}}
