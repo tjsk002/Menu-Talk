@@ -15,7 +15,6 @@ class BoardController
     {
         return view('board.boardWrite');
     }
-
 //    public function show(\App\ ){
 //        return view('.show', compact(''));
 //    }
