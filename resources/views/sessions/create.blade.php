@@ -31,7 +31,6 @@
                     </div>
                     <input type="submit" name="login" class="btn btn-primary form-control"
                            value="로그인">
-
                     <div class="form-group">
                         <p class="text-center loginText">
                             회원이 아니라면?<br>
@@ -43,7 +42,6 @@
                         </p>
 
                     </div>
-
                 </form>
             </div>
         </div>
