@@ -23,7 +23,6 @@
 {{--                            </div>--}}
                             <div class="form-group">
                                 <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="form-control" name="email"
                                            value="회원가입 할 때 사용한 이메일 주소"
