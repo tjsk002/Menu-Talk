@@ -23,7 +23,7 @@ class ArticlesEvent
      * @param Article $article
      * @param string $action
      */
-    public function __construct(\App\Article $article, $action = 'created')
+    public function __construct(\App\Article $article, string $action = 'created')
     {
         $this->article = $article;
         $this->action = $action;
