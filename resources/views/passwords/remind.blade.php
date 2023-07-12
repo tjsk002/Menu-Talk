@@ -1,4 +1,3 @@
-
 @extends('layouts.layout')
 @section('content')
 <form action="{{ route('remind.store') }}" method="POST" role="form" class="form__auth">
