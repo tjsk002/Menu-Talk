@@ -18,28 +18,21 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-
         if(config('database.default')!== 'sqlite'){
             DB::statement('SET FOREIGN_KEY_CHECKS=0');
         }
-
 //        Model::unguard();
-
         /**
          * Model::unguard();
          * Model::requard();
          * 엘로퀀트 모델에 정의한 대량 할당 제약 사항을 풀었다가 잠그는 명령
          */
-
         App\User::truncate();
         // truncate -> 테이블에 담긴 모든 데이터를 버린다. delete != truncate 기본키 1부터 재배열
         $this->call(UsersTableSeeder::class);
-
         App\Article::truncate();
         $this->call(ArticlesTableSeeder::class);
-
 //        Model::requard();
-
         if(config('database.default')!=='sqlite'){
             DB::statement('SET FOREIGN_KEY_CHECKS=1');
         }
