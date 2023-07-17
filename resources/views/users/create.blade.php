@@ -49,7 +49,6 @@
                                name="password_confirmation" maxlength="20" value="{{old('password_confirmation')}}">
 
                     </div>
-
                     {{--                <div class="form-group" style="text-align:center;">--}}
                     {{--                    <div class="btn-group" data-toggle="buttons">--}}
 
