@@ -59,7 +59,6 @@
                     {{--                            <input type="radio" name="userGender" autocomplete="off" value="여자" checked/>여자--}}
                     {{--                        </label>--}}
                     {{--                    </div>--}}
-
                     {{--                </div>--}}
                     <input type="submit" class="btn btn-primary form-control" name="join"
                            value="회원가입">
