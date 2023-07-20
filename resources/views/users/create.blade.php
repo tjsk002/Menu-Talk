@@ -1,9 +1,7 @@
 @extends('layouts.layout')
-
 @section('headerTitle')
     <title>회원가입</title>
 @endsection
-
 @section('content')
     <div class="container">
         <div class="col-lg-4"></div>
