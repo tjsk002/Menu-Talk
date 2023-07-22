@@ -14,7 +14,6 @@
         <a class="btn btn-info">
             <i class="fa fa-pencil"></i>글 수정
         </a>
-
 {{--        </a>--}}
         <button class="btn btn-danger">
             <i class="fa fa-trash-o"></i>글 삭제
