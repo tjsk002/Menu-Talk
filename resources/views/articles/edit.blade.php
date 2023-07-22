@@ -11,6 +11,5 @@
           method="post">
         {!!csrf_token()!!}
         {!! method_field('PUT') !!}
-
     </form>
 @endsection
