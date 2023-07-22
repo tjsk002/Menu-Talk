@@ -39,9 +39,7 @@
                     <div class="form-group">
                         <input type="password" class="form-control" placeholder="비밀번호"
                                name="password" maxlength="20" value="{{old('password')}}">
-
                     </div>
-
                     <div class="form-group">
                         <input type="password" class="form-control" placeholder="비밀번호 확인"
                                name="password_confirmation" maxlength="20" value="{{old('password_confirmation')}}">
