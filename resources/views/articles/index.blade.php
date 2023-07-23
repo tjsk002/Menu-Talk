@@ -9,8 +9,6 @@
     @endphp
 
     <div class="container">
-
-
         <div class="row">
             <!--정렬 UI-->
             <div class="btn-group sort__article" style="padding-bottom: 20px">
