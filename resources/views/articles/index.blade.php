@@ -29,10 +29,7 @@
 {{--                    <th style="background-color: #eeeeee; text-align: center;">작성일</th>--}}
 {{--                </tr>--}}
 {{--                </thead>--}}
-
-
                 <tbody>
-
                 <tr>
                     @forelse($articles as $article)
                         <li>
@@ -46,7 +43,6 @@
                         <td class="text-center text-danger">글이 없습니다.</td>
                     @endforelse
                 </tr>
-
                 </tbody>
             </table>
             @if($articles -> count())
