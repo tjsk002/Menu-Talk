@@ -1,13 +1,10 @@
 @extends('layouts.layout')
-
 @section('headerTitle')
     <title>게시판 포럼 / 글목록</title>
 @endsection
-
 @section('content')
     @php $viewName = 'articles.index';
     @endphp
-
     <div class="container">
         <div class="row">
             <!--정렬 UI-->
@@ -17,7 +14,6 @@
                     {{ trans('forum.articles.sort') }} 일단 보류
                     <span class="caret"></span>
                 </button>
-
             </div>
             <table class="table table-striped"
                    style="text-align: center; border: 1px solid #dddddd;">
@@ -49,12 +45,10 @@
                 <div class="text-center">
                     {!! $articles->appends(Request::except('page'))->render() !!}
                 </div>
-
             @endif
             @if(auth()->user())
                 <a href="{{route('articles.create')}}" class="btn btn-primary pull-right">글쓰기</a>
             @endif
         </div>
     </div>
-
 @endsection
