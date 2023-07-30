@@ -2,7 +2,6 @@
 {{--<p>remind.blade.php</p>--}}
 {{--로그인 하기 전 비밀번호 찾기 -> 비밀번호를 잊으셨나요? 클릭 후ssss??--}}
 {{--@section('content')--}}
-
 {{--    <div class="container">--}}
 {{--        <div class="row">--}}
 {{--            <div class="col-md-8 col-md-offset-2">--}}
