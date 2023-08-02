@@ -24,7 +24,6 @@
 {{--                                <div class="col-md-6">--}}
 {{--                                    <input id="name" type="text" class="form-control" name="name" placeholder="이름"--}}
 {{--                                           required>--}}
-
 {{--                                </div>--}}
 {{--                            </div>--}}
 {{--                            <div class="form-group">--}}
