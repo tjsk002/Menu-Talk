@@ -20,7 +20,6 @@
 {{--                            </div>--}}
 {{--                            <div class="form-group">--}}
 {{--                                <label for="name" class="col-md-4 control-label">Name</label>--}}
-
 {{--                                <div class="col-md-6">--}}
 {{--                                    <input id="name" type="text" class="form-control" name="name" placeholder="이름"--}}
 {{--                                           required>--}}
