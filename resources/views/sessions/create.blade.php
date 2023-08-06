@@ -1,10 +1,5 @@
 @extends('layouts.layout')
 @section('content')
-    <style>
-        .loginText a {
-            font-size: 15px;
-        }
-    </style>
     <div class="container">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
@@ -46,4 +41,9 @@
         </div>
         <div class="col-lg-4"></div>
     </div>
+    <style>
+        .loginText a {
+            font-size: 15px;
+        }
+    </style>
 @endsection
