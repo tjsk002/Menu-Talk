@@ -7,10 +7,8 @@
 {{--            <div class="col-md-8 col-md-offset-2">--}}
 {{--                <div class="panel panel-default">--}}
 {{--                    <div class="panel-heading">비밀번호 찾기/변경</div>--}}
-
 {{--                    <div class="panel-body">--}}
 {{--                        <form class="form-horizontal" method="POST" action="#">--}}
-
 {{--                            <div class="form-group">--}}
 {{--                                <label class="col-md-4 control-label">--}}
 {{--                                    <div class="col-md-6">--}}
