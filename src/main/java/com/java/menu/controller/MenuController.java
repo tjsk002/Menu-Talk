@@ -9,6 +9,7 @@ public class MenuController {
     @GetMapping("/")
     @ResponseBody
     public String main(){
+
         return "Hello world";
     }
 }
