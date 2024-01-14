@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>menu</title>
+</head>
+<style>
+      .layout {
+         width : 500px;
+         margin: 0 auto;
+         margin-top: 40px;
+    }
+    .layout input {
+        width : 100%;
+        box-sizing: border-box;
+        margin-top: 10px;
+    }
+    .layout select {
+        width : 100%;
+    }
+    .input-height {
+        height: 30px;;
+    }
+    .form-margin-top {
+        margin-top: 20px;
+    }
+</style>
+<body>
+<div class="layout">
+    <h2>내 메뉴 상세 페이지</h2>
+    <form class="form-margin-top" action="/menu/write-process" method="post" id="myForm">
+<!--        <select class="input-height" name="order" form="myForm">-->
+<!--            <option value="none" name="beverage" selected disabled>카테고리 선택</option>-->
+<!--            <option value="set" name="set">세트</option>-->
+<!--            <option value="main" name="main">메인</option>-->
+<!--            <option value="side" name="side">사이드</option>-->
+<!--            <option value="beverage" name="beverage">음료</option>-->
+<!--        </select>-->
+        <input class="input-height" type="text" name="title" placeholder="제목">
+        <input class="input-height" type="text" name="content" placeholder="설명">
+<!--        <input class="input-height" type="text" name="sub-title" placeholder="추가설명">-->
+<!--        <input class="input-height" type="text" name="price" placeholder="가격">-->
+<!--        <input class="input-height" type="text" name="tag" placeholder="태그">-->
+        <input class="input-height" type="submit" value="저장">
+    </form>
+</div>
+</body>
+</html>
