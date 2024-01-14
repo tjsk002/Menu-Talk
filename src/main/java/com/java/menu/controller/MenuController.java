@@ -1,5 +1,6 @@
 package com.java.menu.controller;
 
+import com.java.menu.entity.MenuItems;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -15,8 +16,9 @@ public class MenuController {
    }
 
    @PostMapping("/menu/write-process")
-   public String MenuWriteProcess(String title, String content){
-       System.out.println(title + content);
+   public String MenuWriteProcess(MenuItems menuItems){
+       System.out.println(menuItems.getTitle());
+       System.out.println(menuItems.getContent());
        return "";
    }
 }
