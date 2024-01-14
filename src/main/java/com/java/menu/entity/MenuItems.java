@@ -14,8 +14,9 @@ public class MenuItems {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     // jpa가 읽음
     private Integer id;
+    private Integer categoryId;
     private String title;
-    private String sub_title;
+    private String subTitle;
     private String content;
     private Float price;
     private String tag;

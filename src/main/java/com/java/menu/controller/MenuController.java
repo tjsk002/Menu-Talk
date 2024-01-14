@@ -22,6 +22,8 @@ public class MenuController {
    public String MenuWriteProcess(MenuItems menuItems){
        System.out.println(menuItems.getTitle());
        System.out.println(menuItems.getContent());
+       System.out.println(menuItems.getTag());
+       System.out.println(menuItems.getCategoryId());
        menuService.write(menuItems);
        return "";
    }
