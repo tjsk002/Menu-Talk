@@ -20,4 +20,5 @@ public class MenuItems {
     private String content;
     private Float price;
     private String tag;
+//    private String img;
 }
