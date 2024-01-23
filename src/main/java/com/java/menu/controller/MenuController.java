@@ -13,18 +13,20 @@ public class MenuController {
    private MenuService menuService;
     // view file - //localhost:10040/menu/write
    @GetMapping("/menu/write")
-   public String MenuWriteForm(){
+   public String menuWriteForm(){
         System.out.println("90900");
        return "menu/menu-write";
    }
 
    @PostMapping("/menu/write-process")
-   public String MenuWriteProcess(MenuItems menuItems){
-       System.out.println(menuItems.getTitle());
-       System.out.println(menuItems.getContent());
-       System.out.println(menuItems.getTag());
-       System.out.println(menuItems.getCategoryId());
+   public String menuWriteProcess(MenuItems menuItems) throws Exception {
        menuService.write(menuItems);
-       return "";
+       return "menu/menu-complete";
+   }
+
+   // GetMapping - endpoint
+   @GetMapping("/menu/list")
+   public String menuList(){
+        return "menu/menu-list"; //uri
    }
 }
