@@ -6,8 +6,11 @@
         <div class="jumbotron">
             <div class="container">
                 <h1>웹사이트 소개</h1>
-                <p>이 웹 사이트는 부트스트랩으로 만든 php웹 사이트입니다. 최소한의 간단한 기능을 이용해서 개발했습니다.</p>
-                <p class="text-center"><a class="btn btn-primary btn-pull" href="{{route('index')}}" role="button">자세히 알아보기</a></p>
+                <p>
+                    이 웹 사이트는 부트스트랩으로 만든 php 웹 사이트입니다.
+                    최소한의 간단한 기능을 이용해서 개발했습니다.</p>
+                <p class="text-center"><a class="btn btn-primary btn-pull"
+                                          href="{{route('index')}}" role="button">자세히 알아보기</a></p>
             </div>
         </div>
     </div>
