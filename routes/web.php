@@ -21,32 +21,10 @@ Route::get('docs/{file?}', 'DocsController@show');
 //    return app(ParsedownExtra::class)->text($text);
 
 
-/**
- * 컴포넌트 사용하기
- */
-Route::get('markdown', function () {
-    $text = <<<EOT
-<<<MARKER(줄바꿔 문자열 시작)와 (공백허용 안됨)MARKER; 사이에 문장을 자유롭게 쓸 수 있다.
-# 마크다운 예제 1
-이 문서는 [마크다운][1]으로 썼습니다. 화면에는 HTML으로 변환되어 출력됩니다.
 
-## 순서 없는 목록
-- 첫번째 항목
-- 두번째 항목[^1]
-
-[1] : http://daringfireball.net/projects/markdown
-[^1] : 두번째 항목 _http://google.com
-
-
-EOT;
-
-    return app(ParsedownExtra::class)->text($text);
-//    app() -> 클래스 이름을 넘기면, 해당 클래스가 의존하는 하위 클래스까지 모두 주입된 인스턴스를 반환한다
-});
-
-Event::listen('article.created', function ($article) {
-    var_dump('이벤트를 받았습니다. 받은 데이터(상태)는 다음과 같습니다.');
-});
+//Event::listen('article.created', function ($article) {
+//    var_dump('이벤트를 받았습니다. 받은 데이터(상태)는 다음과 같습니다.');
+//});
 Route::get('/', 'Home\Home2Controller@home')
 //    return view('layouts.header')
     ->name('home2');
@@ -55,7 +33,7 @@ Route::get('/', 'Home\Home2Controller@home')
 Route::get('/index', 'ArticlesController@index')
     ->name('index');
 
-Route::resource('articles', 'ArticlesController');
+//Route::resource('articles', 'ArticlesController');
 
 //Auth::routes();
 //Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
@@ -87,6 +65,9 @@ Route::prefix('admin')->group(function () {
     });
 });
 */
+use App\Http\Controllers\UserController;
+
+Route::get('api/user', [UserController::class, 'index']);
 
 Route::get('auth/join', [
     'as' => 'users.create',

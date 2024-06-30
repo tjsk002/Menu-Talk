@@ -4,12 +4,15 @@
     @parent
     <div class="container">
         <div class="jumbotron">
-            <div class="container">
-                <h1>웹사이트 소개</h1>
-                <p>이 웹 사이트는 부트스트랩으로 만든 php웹 사이트입니다. 최소한의 간단한 기능을 이용해서 개발했습니다.</p>
-                <p class="text-center"><a class="btn btn-primary btn-pull" href="{{route('index')}}" role="button">자세히 알아보기</a></p>
+            <div class="container" style="display: inline-block">
+                <h1 style="font-weight: bold">Menu-Talk</h1>
+                <p style="font-weight: bold">테블릿 메뉴판</p>
+                <p style="font-weight: bold; font-size: 40px;">구매하지 말고<br>
+                    <span style="color: #E84429">부담 ZERO</span> 렌탈 시작하세요
+                </p>
+                <button style="background-color: #212121; color: #fff; border-radius: 12px; padding: 12px 24px">렌탈 1위 메뉴톡과 상담</button>
+{{--                <p class="text-center"><a class="btn btn-primary btn-pull" href="{{route('index')}}" role="button">자세히 알아보기</a></p>--}}
             </div>
-        </div>
     </div>
 {{--    <div class="container">--}}
 {{--        <div id="myCarousel" class="carousel slide" data-ride="carousel">--}}
@@ -41,7 +44,16 @@
     <div class="container">
         <div class="jumbotron">
             <div class="container">
-                <h1>.</h1>
+                <h3>
+                    메뉴잇은 어떤 특별한 혜택을 제공할까요?
+                </h3>
+                <div>
+                    평생 무료 A/S 서비스를 드려요
+                    <p>사용한지 3년이 지났는데 이상 무상수리 안된대요.
+                    기기가 제 소유인데도 소프트웨어 비용은 지불해야 한대요.
+                        이럴거면 그냥 렌탈했죠!
+                    </p>
+                </div>
                 {{--                    <p class="text-center"><a class="btn btn-primary btn-pull" href="#" role="button">자세히 알아보기</a></p>--}}
             </div>
         </div>
