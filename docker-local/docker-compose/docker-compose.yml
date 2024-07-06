@@ -36,37 +36,6 @@ services:
       - "3311:3311"
     networks:
       - crud
-  # Redis
-#  crud-redis:
-#    image: redis:alpine
-#    container_name: crud-redis
-#    ports:
-#      - "${REDIS_PORT}:6379"
-#    networks:
-#      - crud
-
-### elk 설치시 사용가능
-### https://github.com/brich-dev-member/b-elk-stack
-#  crud-filebeat:
-#      image: docker.elastic.co/beats/filebeat:7.14.0
-#      container_name: crud-filebeat
-#      depends_on:
-#        - crud-php-fpm
-#      user: root # root 계정 필요
-#      volumes:
-#        # Filebeat 설정 파일
-#        - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
-#        # for accessing docker
-#        - /var/run/docker.sock:/var/run/docker.sock
-#        # log path
-#        - type: bind
-#          source: ../storage/logs
-#          target: /tmp/logs
-#          read_only: true
-#      networks:
-#        - b-elk-stack_elk
-
-
 # Docker Networks
 networks:
   crud:
