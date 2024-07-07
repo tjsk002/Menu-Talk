@@ -1,32 +1,32 @@
 version: "3.1"
 services:
-  crud-nginx:
+  menu-talk-nginx:
     image: nginx
-    container_name: crud-nginx
+    container_name: menu-talk-nginx
     volumes:
       - ../:/var/www/html:rw
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - "10040"
+      - "10040:80"
     networks:
-      - crud
+      - menu-talk
 
-  crud-php-fpm:
+  menu-talk-php-fpm:
     build:
       context: .
-      dockerfile: php-fpm/Dockerfile
-    container_name: crud-php-fpm
+      dockerfile: Dockerfile
+    container_name: menu-talk-php-fpm
     volumes:
       - ../:/var/www/html
       - ./php-fpm/php.ini:/usr/local/etc/php/php.ini
       - ./php-fpm/php-fpm.d/www.conf:/usr/local/etc/php-fpm.d/www.conf
       - ./php-fpm/php-fpm.conf:/usr/local/etc/php-fpm.conf
     networks:
-      - crud
+      - menu-talk
 
-  crud-mysql:
+  menu-talk-mysql:
     image: mysql:latest
-    container_name: menu-talk
+    container_name: menu-talk-mysql-db
     environment:
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_DATABASE: menu-talk
@@ -35,10 +35,10 @@ services:
     ports:
       - "3311:3311"
     networks:
-      - crud
+      - menu-talk
 # Docker Networks
 networks:
-  crud:
+  menu-talk:
     driver: bridge
 #  b-elk-stack_elk:
 #    external: true
