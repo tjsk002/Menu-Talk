@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap-theme.css')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap-theme.min.css')}}">
-    <link href="{{elixir('css/app.css')}}" rel="stylesheet">
+    <link href="{{mix('css/app.css')}}" rel="stylesheet">
     @yield('headerTitle')
     <style type="text/css">
         a, a:hover {
@@ -87,6 +87,6 @@
 </script>
 <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="/js/bootstrap.js"></script>
-<script src="{{elixir('js/app.js')}}"></script>
+<script src="{{mix('js/app.js')}}"></script>
 </body>
 </html>
