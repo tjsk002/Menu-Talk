@@ -74,6 +74,9 @@ composer update
 cd /var/www/html <br>
 composer install <br>
 composer dump-autoload --optimize <br>
+
+### docker 터미널에서 : php-fpm
+cd html
 php artisan config:cache <br>
 php artisan route:cache <br>
 php artisan view:cache <br>
