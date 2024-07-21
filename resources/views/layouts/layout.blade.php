@@ -26,7 +26,7 @@
             <span class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{route('home2')}}">php 게시판 웹 사이트</a>
+        <a class="navbar-brand" href="{{route('home2')}}">menu talk</a>
     </div>
 
     <div class="collapse navbar-collapse"

@@ -61,8 +61,12 @@
     <div class="container">
         <div class="jumbotron">
             <div class="container">
-                <h1>.</h1>
-                {{--                    <p class="text-center"><a class="btn btn-primary btn-pull" href="#" role="button">자세히 알아보기</a></p>--}}
+                <h1>테이블 오더의 최종 진화</h1>
+                <p>
+                    메뉴 톡 오더패드
+                    <span>지금부터는 무선입니다.</span>
+                </p>
+                <p class="text-center"><a class="btn btn-primary btn-pull" href="#" role="button">자세히 알아보기</a></p>
             </div>
         </div>
     </div>
