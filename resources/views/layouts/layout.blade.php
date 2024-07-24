@@ -46,6 +46,7 @@
 {{--                                    data-toggle="dropdown" role="button" aria-haspopup="true"--}}
 {{--                                    aria-expanded="false">접속하기<span class="caret"></span></a>--}}
 {{--                <ul class="dropdown-menu">--}}
+                    <li><a href="">문의하기</a></li>
                     <li><a href="{{route('sessions.store')}}">로그인</a></li>
                     <li><a href="{{route('users.store')}}">회원가입</a></li>
 {{--                </ul>--}}
