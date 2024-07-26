@@ -48,6 +48,8 @@
 {{--                <ul class="dropdown-menu">--}}
                     <li><a href="">문의하기</a></li>
                     <li><a href="{{route('sessions.store')}}">로그인</a></li>
+
+{{--                    <li><a href="{{route('manage.auth.login')}}">로그인</a></li>--}}
                     <li><a href="{{route('users.store')}}">회원가입</a></li>
 {{--                </ul>--}}
             </li>
