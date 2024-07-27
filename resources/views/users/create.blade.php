@@ -8,58 +8,63 @@
         <div class="col-lg-4">
             <div class="jumbotron" style="padding-top: 20px;">
                 <form method="post" action="{{route('users.store')}}">
-                    {{--                csrf_field 함수는 CSRF 토큰 값을 포함하는 HTML hidden Input 필드를 생성--}}
                     {!! csrf_field() !!}
-                    <h3 style="text-align: center;">회원가입 화면</h3>
-                    {{--                <div class="form-group">--}}
-                    {{--                    <input type="text" class="form-control" placeholder="아이디"--}}
-                    {{--                           name="userID" maxlength="20">--}}
-                    {{--                </div>--}}
+                    <h3 style="text-align: center;">회원가입</h3>
+                    {{--사용자 관련정보--}}
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="이름"
                                name="name" maxlength="20" value="{{old('name')}}">
-                        {{--                    old 함수는 세션에 저장된 이전 입력값(flashed)을 조회 --}}
-{{--                        {!! $error->first('name','<span class="form-error">:message</span>') !!}--}}
-
-{{--                        @if ($errors->has('name'))--}}
-{{--                            <span class="help-block">--}}
-{{--                                        <strong>{{ $errors->first('name') }}</strong>--}}
-{{--                                    </span>--}}
-{{--                        @endif--}}
-                    </div>
-                    <div class="form-group">
                         <input type="email" class="form-control" placeholder="이메일"
-                               name="email" maxlength="20" value="{{old('email')}}">
-                        {{--                        @if ($errors->has('email'))--}}
-                        {{--                            <span class="help-block">--}}
-                        {{--                                        <strong>{{ $errors->first('email') }}</strong>--}}
-                        {{--                                    </span>--}}
-                        {{--                        @endif--}}
-                    </div>
-                    <div class="form-group">
+                               name="email" maxlength="50" value="{{old('email')}}">
+                        <input type="text" class="form-control" placeholder="핸드폰 번호"
+                               name="phone_number" maxlength="50" value="{{old('phone_number')}}">
                         <input type="password" class="form-control" placeholder="비밀번호"
-                               name="password" maxlength="20" value="{{old('password')}}">
-                    </div>
-                    <div class="form-group">
+                               name="password" maxlength="50" value="{{old('password')}}">
                         <input type="password" class="form-control" placeholder="비밀번호 확인"
-                               name="password_confirmation" maxlength="20" value="{{old('password_confirmation')}}">
+                               name="password_confirmation" maxlength="50" value="{{old('password_confirmation')}}">
                     </div>
-                    {{--                <div class="form-group" style="text-align:center;">--}}
-                    {{--                    <div class="btn-group" data-toggle="buttons">--}}
-
-                    {{--                        <label class="btn btn-primary active">--}}
-                    {{--                            <input type="radio" name="userGender" autocomplete="off" value="남자" checked/>남자--}}
-                    {{--                        </label>--}}
-                    {{--                        <label class="btn btn-primary">--}}
-                    {{--                            <input type="radio" name="userGender" autocomplete="off" value="여자" checked/>여자--}}
-                    {{--                        </label>--}}
-                    {{--                    </div>--}}
-                    {{--                </div>--}}
-                    <input type="submit" class="btn btn-primary form-control" name="join"
-                           value="회원가입">
+                    {{--회사정보--}}
+                    <div class="form-group" style="margin-top: 40px;">
+                        <input type="text" class="form-control" placeholder="회사 이름"
+                               name="company_name" maxlength="50" value="{{old('company_name')}}">
+                        <input type="text" class="form-control" placeholder="사업자 번호"
+                               name="company_name" maxlength="50" value="{{old('business_number')}}">
+                        <input type="text" class="form-control" placeholder="회사 연락처"
+                               name="company_number" maxlength="50" value="{{old('company_number')}}">
+                    </div>
+                    <div>
+                        <div class="terms"><h6 class="terms__title">서비스 약관에 동의해 주세요.</h6>
+                            <div class="terms__all-agree">
+                                <label>
+                                    <input type="checkbox"> 모두 동의합니다.
+                                </label>
+                            </div>
+                            <div>
+                                <div><label><input type="checkbox" required="required"> 만 14세
+                                        이상입니다.
+                                    </label></div>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" required="required"> [필수] 이용약관
+                                    </label>
+                                </div>
+                                <div>
+                                    <label>
+                                        <input type="checkbox" required="required"> [필수] 개인정보 수집 및 이용 동의
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-primary form-control" name="join" value="회원가입">
                 </form>
             </div>
         </div>
         <div class="col-lg-4"></div>
     </div>
+    <style>
+        .form-control {
+            margin: 20px 0;
+        }
+    </style>
 @endsection
