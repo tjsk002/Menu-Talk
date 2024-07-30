@@ -174,6 +174,9 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+        App\Domains\Contacts\Providers\ContactRouteServiceProvider::class,
+        App\Domains\Contacts\Providers\ContactServiceProvider::class,
+
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
