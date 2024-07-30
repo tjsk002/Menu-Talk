@@ -2,6 +2,8 @@
 
 namespace App\Domains\Contacts\Services;
 
+use App\Models\ContactForm;
+
 class ContactService implements ContactServiceInterface
 {
     public function __construct(private ContactForm $contactForm)
