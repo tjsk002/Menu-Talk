@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Domains\Utils\Traits\ControllerTrait;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
+    use ControllerTrait;
     /**
      * 사용자 등록
      */
@@ -22,14 +25,37 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
+        dump(11);
+//        $this->validate($request, [
+//            'name' => 'required|max:255',
+//            'email' => 'required|email|max:255|unique:authors',
+//            'phone_number' => 'required|max:50',
+//            'password' => 'required|confirmed|min:2|max:50',
+//            'company_name' => 'required|max:50',
+//            'company_number' => 'required|max:50',
+//        ]);
+
+        $validator = Validator::make($request->all(), [
+//            'last_name'  => 'required|string|max:100',
+//            'first_name' => 'required|string|max:100',
+//            'email'      => 'required|string|email|max:255|unique:users',
+//            'password'   => 'required|string|min:6|confirmed',
+
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:authors',
             'phone_number' => 'required|max:50',
             'password' => 'required|confirmed|min:2|max:50',
             'company_name' => 'required|max:50',
             'company_number' => 'required|max:50',
-        ]);
+        ]); // 'name' => 'required|string|max:255',
+
+        if ($validator->fails()) {
+            return $this->errorBackWithInputResponse($request, 'error.');
+
+
+//            return response()->json(['errors' => $validator->errors()->all()], 422);
+        }
+
 
 //        $user = \App\User::create([
 //            // DB에 입력한 값 input
@@ -56,8 +82,8 @@ class UsersController extends Controller
 //                sprintf('[%s 회원가입을 확인해 주세요.]', config('app.name'))
 //            );
 //        });
-
-        return $this->respondCreated('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
+        return $this->successResponse('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
+//        return $this->respondCreated('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
 //        flash('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
 //        return redirect('/');
 
