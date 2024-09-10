@@ -29,8 +29,8 @@
                     <input type="submit" name="login" class="btn btn-primary form-control"
                            value="로그인">
                     <div class="form-group">
-                        <p class="text-center loginText">
-                            회원이 아니라면?<br>
+                        <p class="text-center login-text">
+{{--                            회원이 아니라면?<br>--}}
                             <a href="{{route('users.create')}}">회원가입하러가기</a>
                             <br>
                             <a href="{{route('remind.create')}}">
@@ -44,7 +44,10 @@
         <div class="col-lg-4"></div>
     </div>
     <style>
-        .loginText a {
+        .login-text {
+            margin-top: 50px;
+        }
+        .login-text a {
             font-size: 15px;
         }
     </style>

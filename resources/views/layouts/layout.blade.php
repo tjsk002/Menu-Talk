@@ -93,7 +93,6 @@
     @endif
 </nav>
 @php
-dump("??? => ".$userId);
 @endphp
 {{--@include('manage.invoice_modal', ['user_id', $userId]);--}}
 @include('manage.invoice_modal')

@@ -3,6 +3,40 @@
     <title>회원가입</title>
 @endsection
 @section('content')
+
+{{--    <!DOCTYPE html>--}}
+{{--    <html lang="ko">--}}
+{{--    <head>--}}
+{{--        <meta charset="UTF-8">--}}
+{{--        <meta name="viewport" content="width=device-width, initial-scale=1.0">--}}
+{{--        <title>체크박스 전체 선택</title>--}}
+{{--        <style>--}}
+{{--            label {--}}
+{{--                display: block;--}}
+{{--                margin-bottom: 10px;--}}
+{{--            }--}}
+{{--        </style>--}}
+{{--    </head>--}}
+{{--    <body>--}}
+{{--    <label>--}}
+{{--        <input type="checkbox" class="checkbox"> 항목 1--}}
+{{--    </label>--}}
+{{--    <label>--}}
+{{--        <input type="checkbox" class="checkbox"> 항목 2--}}
+{{--    </label>--}}
+{{--    <label>--}}
+{{--        <input type="checkbox" class="checkbox"> 항목 3--}}
+{{--    </label>--}}
+{{--    <label>--}}
+{{--        <input type="checkbox" class="checkbox"> 항목 4--}}
+{{--    </label>--}}
+{{--    <label>--}}
+{{--        <input type="checkbox" class="checkbox"> 항목 5--}}
+{{--    </label>--}}
+{{--        <button id="toggleAll">모두 선택/해제</button>--}}
+{{--    </body>--}}
+{{--    </html>--}}
+
     <div class="container">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
@@ -33,41 +67,46 @@
                                name="company_number" maxlength="50" value="{{old('company_number')}}">
                     </div>
                     <div>
-                        <div class="terms"><h6 class="terms__title">서비스 약관에 동의해 주세요.</h6>
-                            <div class="terms__all-agree">
-                                <label>
-                                    <input type="checkbox"> 모두 동의합니다.
-                                </label>
-                            </div>
-                            <div>
-                                <div>
-                                    <label>
-                                        <input type="checkbox" required="required"> 만 14세
-                                        이상입니다.
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                        <input type="checkbox" required="required"> [필수] 이용약관
-                                    </label>
-                                </div>
-                                <div>
-                                    <label>
-                                        <input type="checkbox" required="required"> [필수] 개인정보 수집 및 이용 동의
-                                    </label>
-                                </div>
-                            </div>
+                        <div id="toggleAll">
+{{--                            <input type="checkbox" class="checkbox" required="required">--}}
+                            <span>모두 동의합니다.</span>
                         </div>
+                        <label><br>
+                            <input type="checkbox" class="checkbox" required="required"> 만 14세 이상입니다.
+                        </label>
+                        <label><br>
+                            <input type="checkbox" class="checkbox" required="required"> [필수] 이용약관
+                        </label>
+                        <label><br>
+                            <input type="checkbox" class="checkbox" required="required"> [필수] 개인정보 수집 및 이용 동의
+                        </label>
                     </div>
                     <input type="submit" class="btn btn-primary form-control" name="join" value="회원가입">
                 </form>
+
             </div>
         </div>
         <div class="col-lg-4"></div>
     </div>
     <style>
+        label {
+            display: block;
+        }
         .form-control {
             margin: 20px 0;
         }
+        #toggleAll {
+            cursor: pointer;
+        }
     </style>
+    <script>
+        document.getElementById('toggleAll').addEventListener('click', function() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const allChecked = Array.from(checkboxes).every(checkbox => checkbox.checked);
+
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = !allChecked;
+            });
+        });
+    </script>
 @endsection
