@@ -16,10 +16,9 @@ class SessionsController extends Controller
         $this->middleware('guest',['except'=>'destroy']);
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application|\Illuminate\View\View
-     */
     public function create(){
+        logger(11);
+//        return view('users.create');
         return view('sessions.create');
     }
 
@@ -29,6 +28,7 @@ class SessionsController extends Controller
      */
 
     public function store(Request $request){
+        dd(2);
         $this->validate($request, [
             'email'=>'required|email|regex:/(.+)@(.+)\.(.+)/i',
             'password'=>'required|min:2'

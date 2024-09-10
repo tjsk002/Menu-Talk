@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,13 +79,17 @@ Route::post('auth/join', [
     'uses' => 'UsersController@store',
 ]);
 
-Route::get('auth/confirm/{code}', [
-    'as' => 'users.confirm',
-    'uses' => 'UsersController@confirm',
-])->where('code', '[\pL-\pN]{60}');
+Route::middleware('')->prefix('/')->group(function (){
+    Route::get('/invoice', 'App\Domains\Manages\Controllers\InvoiceController@invoice')->name('manage.invoice');
+});
+//Route::get('auth/confirm/{code}', [
+//    'as' => 'users.confirm',
+//    'uses' => 'UsersController@confirm',
+//])->where('code', '[\pL-\pN]{60}');
 // 60바이트 활성화 코드로 사용자를 찾은 후, 활성화 코드는 지우고 가입 확인 여부 열은 1로 바꾼다
 
 /*사용자 인증*/
+
 Route::get('auth/login', [
     'as' => 'sessions.create',
     'uses' => 'SessionsController@create',
@@ -94,6 +98,24 @@ Route::post('auth/login', [
     'as' => 'sessions.store',
     'uses' => 'SessionsController@store',
 ]);
+
+//Route::prefix('/manage/auth')->group(function (){
+////    Route::get('/login', ['App\Http\Controllers\SessionsController@create'])->name('manage.auth.login');
+////    Route::post('auth/login', [
+////        'as' => 'sessions.store',
+////        'uses' => 'SessionsController@store',
+////    ]);
+//
+//    Route::get('/login', [
+//        'as' => 'manage.auth.login',
+//        'uses' => 'SessionsController@create',
+//    ]);
+//    Route::post('/login', [
+//        'as' => 'sessions.store',
+//        'uses' => 'SessionsController@store',
+//    ]);
+//});
+
 Route::get('auth/logout', [
     'as' => 'sessions.destroy',
     'uses' => 'SessionsController@destroy',
@@ -112,10 +134,10 @@ Route::post('auth/remind', [
     'uses' => 'PasswordsController@postRemind',
 ]);
 
-Route::get('auth/reset/{token}', [
-    'as' => 'reset.create',
-    'uses' => 'PasswordsController@getReset',
-])->where('token', '[\pL-\pN]{64}');
+//Route::get('auth/reset/{token}', [
+//    'as' => 'reset.create',
+//    'uses' => 'PasswordsController@getReset',
+//])->where('token', '[\pL-\pN]{64}');
 // where('token', '[\pL-\pN]{64}'); 비밀번호 바꾸기 폼 -> 라우트 보호하기
 
 Route::post('auth/reset', [
