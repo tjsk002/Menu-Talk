@@ -40,9 +40,12 @@
                                 </label>
                             </div>
                             <div>
-                                <div><label><input type="checkbox" required="required"> 만 14세
+                                <div>
+                                    <label>
+                                        <input type="checkbox" required="required"> 만 14세
                                         이상입니다.
-                                    </label></div>
+                                    </label>
+                                </div>
                                 <div>
                                     <label>
                                         <input type="checkbox" required="required"> [필수] 이용약관

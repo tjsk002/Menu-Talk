@@ -22,39 +22,33 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
-        /* 사용자 등록 요청 정리
-         * 사용자가 회원 가입 폼에 내용을 채워 전송했을 때의 처리 로직
-         */
-
         $this->validate($request, [
-            // input 입력값
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:authors',
-//           // unique:authors -> 유효한 이메일 형싱, authors 테이블에서 유일해야한다
-            'password' => 'required|confirmed|min:2',
-//            'business_number' => 'required|min:10|max:12'
-            // confirmed -> 검사할 필드의 값과 검사할 필드_confirmed 같아야한다
-        ]);
-       $confirmCode = str_random(60);
-
-        $user = \App\User::create([
-            // DB에 입력한 값 input
-            'name' => $request->input('name'),
-            //  Request::input('name')과 같다
-            'email' => $request->input('email'),
-            'password' => bcrypt($request->input('password')),
-            'confirmCode'=> $confirmCode,
-//            'businessNumber' => $request->input('business_number')
+            'phone_number' => 'required|max:50',
+            'password' => 'required|confirmed|min:2|max:50',
+            'company_name' => 'required|max:50',
+            'company_number' => 'required|max:50',
         ]);
 
-        auth()->login($user);
-        flash(auth()->user()->name . '님 환영합니다.');
+//        $user = \App\User::create([
+//            // DB에 입력한 값 input
+//            'name' => $request->input('name'),
+//            //  Request::input('name')과 같다
+//            'email' => $request->input('email'),
+//            'password' => bcrypt($request->input('password')),
+//            'confirmCode'=> $confirmCode,
+////            'businessNumber' => $request->input('business_number')
+//        ]);
+
+//        auth()->login($user);
+//        flash(auth()->user()->name . '님 환영합니다.');
 
         /**
          * 이메일 보내기 추출 -> 컨트롤러에서 가입 확인 메일을 보내지말고, 이벤트를 던져 이벤트 리스너에서 메일을 보낸다
          */
 
-        event(new \App\Events\UserCreated($user));
+//        event(new \App\Events\UserCreated($user));
 //        \Mail::send('emails.auth.confirm',compact('user'), function ($message)use($user){
 //        event(new \App\Events\UserCreated($user));
 //            $message->to($user -> email);

@@ -24,16 +24,16 @@ services:
     networks:
       - menu-talk
 
-  menu-talk-mysql:
+  menu-talk-mysql-db:
     image: mysql:latest
     container_name: menu-talk-mysql-db
     environment:
       MYSQL_ROOT_PASSWORD: 1234
-      MYSQL_DATABASE: menu-talk
+      MYSQL_DATABASE: root
       MYSQL_USER: menu-talk
       MYSQL_PASSWORD: 1234
     ports:
-      - "3311:3311"
+      - "3311:8889"
     networks:
       - menu-talk
 # Docker Networks
