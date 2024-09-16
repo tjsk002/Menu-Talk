@@ -25,71 +25,25 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
-        dump(11);
-//        $this->validate($request, [
-//            'name' => 'required|max:255',
-//            'email' => 'required|email|max:255|unique:authors',
-//            'phone_number' => 'required|max:50',
-//            'password' => 'required|confirmed|min:2|max:50',
-//            'company_name' => 'required|max:50',
-//            'company_number' => 'required|max:50',
-//        ]);
-
         $validator = Validator::make($request->all(), [
-//            'last_name'  => 'required|string|max:100',
-//            'first_name' => 'required|string|max:100',
-//            'email'      => 'required|string|email|max:255|unique:users',
-//            'password'   => 'required|string|min:6|confirmed',
-
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:authors',
-            'phone_number' => 'required|max:50',
-            'password' => 'required|confirmed|min:2|max:50',
-            'company_name' => 'required|max:50',
-            'company_number' => 'required|max:50',
-        ]); // 'name' => 'required|string|max:255',
+            'name'  => 'required|string|max:100', // 회원 이름
+            'phone_number' => 'required|string|max:100', // 회원 연락처
+            'email'      => 'required|string|email|max:255|unique:users', // 회원 이메일
+            'password'   => 'required|string|min:6|confirmed',
+            'company_name'  => 'required|string|max:100', // 회사 이름
+            'business_number'  => 'required|string|max:100', // 사업자 번호
+            'company_number'  => 'required|string|max:100', // 회사 연락처
+        ]);
 
         if ($validator->fails()) {
-            return $this->errorBackWithInputResponse($request, 'error.');
-
-
-//            return response()->json(['errors' => $validator->errors()->all()], 422);
+            return response()->json(['errors' => $validator->errors()->all()], 422);
         }
 
-
-//        $user = \App\User::create([
-//            // DB에 입력한 값 input
-//            'name' => $request->input('name'),
-//            //  Request::input('name')과 같다
-//            'email' => $request->input('email'),
-//            'password' => bcrypt($request->input('password')),
-//            'confirmCode'=> $confirmCode,
-////            'businessNumber' => $request->input('business_number')
-//        ]);
-
-//        auth()->login($user);
-//        flash(auth()->user()->name . '님 환영합니다.');
-
-        /**
-         * 이메일 보내기 추출 -> 컨트롤러에서 가입 확인 메일을 보내지말고, 이벤트를 던져 이벤트 리스너에서 메일을 보낸다
-         */
-
-//        event(new \App\Events\UserCreated($user));
-//        \Mail::send('emails.auth.confirm',compact('user'), function ($message)use($user){
-//        event(new \App\Events\UserCreated($user));
-//            $message->to($user -> email);
-//            $message->subject(
-//                sprintf('[%s 회원가입을 확인해 주세요.]', config('app.name'))
-//            );
-//        });
-        return $this->successResponse('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
-//        return $this->respondCreated('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
-//        flash('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
-//        return redirect('/');
-
-//        auth()->login($user);
-        // 생성한 사용자 객체로 로그인한
-//        flash(auth()->user()->name . '님 환영합니다');
+        // 1. 'users' 테이블에 email 데이터 있는지 확인
+        // 2. 회원 가입 데이터 저장 'users'
+        // 3. 성공 리턴
+        return response()->json(['message' => 'success'], 200);
+//        return $this->successResponse('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
     }
 
     protected function respondCreated($message)
