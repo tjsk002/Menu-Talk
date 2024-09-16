@@ -3,40 +3,6 @@
     <title>회원가입</title>
 @endsection
 @section('content')
-
-{{--    <!DOCTYPE html>--}}
-{{--    <html lang="ko">--}}
-{{--    <head>--}}
-{{--        <meta charset="UTF-8">--}}
-{{--        <meta name="viewport" content="width=device-width, initial-scale=1.0">--}}
-{{--        <title>체크박스 전체 선택</title>--}}
-{{--        <style>--}}
-{{--            label {--}}
-{{--                display: block;--}}
-{{--                margin-bottom: 10px;--}}
-{{--            }--}}
-{{--        </style>--}}
-{{--    </head>--}}
-{{--    <body>--}}
-{{--    <label>--}}
-{{--        <input type="checkbox" class="checkbox"> 항목 1--}}
-{{--    </label>--}}
-{{--    <label>--}}
-{{--        <input type="checkbox" class="checkbox"> 항목 2--}}
-{{--    </label>--}}
-{{--    <label>--}}
-{{--        <input type="checkbox" class="checkbox"> 항목 3--}}
-{{--    </label>--}}
-{{--    <label>--}}
-{{--        <input type="checkbox" class="checkbox"> 항목 4--}}
-{{--    </label>--}}
-{{--    <label>--}}
-{{--        <input type="checkbox" class="checkbox"> 항목 5--}}
-{{--    </label>--}}
-{{--        <button id="toggleAll">모두 선택/해제</button>--}}
-{{--    </body>--}}
-{{--    </html>--}}
-
     <div class="container">
         <div class="col-lg-4"></div>
         <div class="col-lg-4">
@@ -68,7 +34,6 @@
                     </div>
                     <div>
                         <div id="toggleAll">
-{{--                            <input type="checkbox" class="checkbox" required="required">--}}
                             <span>모두 동의합니다.</span>
                         </div>
                         <label><br>
@@ -81,7 +46,7 @@
                             <input type="checkbox" class="checkbox" required="required"> [필수] 개인정보 수집 및 이용 동의
                         </label>
                     </div>
-                    <input type="submit" class="btn btn-primary form-control" name="join" value="회원가입">
+                    <input type="submit" class="btn btn-primary form-control" name="join" value="join">
                 </form>
 
             </div>
