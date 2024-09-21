@@ -26,7 +26,7 @@
             <span class="icon-bar"></span> <span class="icon-bar"></span> <span
                     class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{route('home2')}}">menu talk</a>
+        <a class="navbar-brand" href="{{route('home2')}}">Menu Talk</a>
     </div>
 
     <div class="collapse navbar-collapse"
