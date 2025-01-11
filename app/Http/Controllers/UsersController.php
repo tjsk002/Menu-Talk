@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Domains\Auth\Services\AuthServiceInterface;
 use App\Domains\Utils\Traits\ControllerTrait;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -11,12 +13,13 @@ use App\Models\User;
 class UsersController extends Controller
 {
     use ControllerTrait;
+
     /**
      * 사용자 등록
      */
-    public function __construct()
+    public function __construct(private AuthServiceInterface $authService)
     {
-       $this->middleware('guest')->except('logout');
+//       $this->middleware('guest')->except('logout');
        // except logout 제외
     }
 
@@ -42,7 +45,7 @@ class UsersController extends Controller
         }
 
         try {
-            $user = User::create([
+            $this->authService->create([
                 'name' => $request->input('name'),
                 'company_name' => $request->input('company_name'),
                 'phone_number' => $request->input('phone_number'),
@@ -51,6 +54,15 @@ class UsersController extends Controller
                 'business_id' => $request->input('business_number'),
                 'company_number' => $request->input('company_number')
             ]);
+//            $user = User::create([
+//                'name' => $request->input('name'),
+//                'company_name' => $request->input('company_name'),
+//                'phone_number' => $request->input('phone_number'),
+//                'email' => $request->input('email'),
+//                'password' => Hash::make($request->input('password')),
+//                'business_id' => $request->input('business_number'),
+//                'company_number' => $request->input('company_number')
+//            ]);
         }catch(Exception $e){
             return response()->json(['message' => 'fail', 500]);
         }
