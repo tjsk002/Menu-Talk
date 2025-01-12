@@ -64,9 +64,6 @@
             company_name: document.getElementById('company_name').value,
             business_number: document.getElementById('business_number').value,
             company_number: document.getElementById('company_number').value,
-            over_14: document.getElementById('over_14').checked, // 약관동의
-            terms_agree: document.getElementById('terms_agree').checked, // 약관동의
-            privacy_agree: document.getElementById('privacy_agree').checked // 약관동의
         };
 
         axios.post('/auth/join', formData)
