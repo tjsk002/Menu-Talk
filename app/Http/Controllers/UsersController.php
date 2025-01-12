@@ -54,15 +54,6 @@ class UsersController extends Controller
                 'business_id' => $request->input('business_number'),
                 'company_number' => $request->input('company_number')
             ]);
-//            $user = User::create([
-//                'name' => $request->input('name'),
-//                'company_name' => $request->input('company_name'),
-//                'phone_number' => $request->input('phone_number'),
-//                'email' => $request->input('email'),
-//                'password' => Hash::make($request->input('password')),
-//                'business_id' => $request->input('business_number'),
-//                'company_number' => $request->input('company_number')
-//            ]);
         }catch(Exception $e){
             return response()->json(['message' => 'fail', 500]);
         }

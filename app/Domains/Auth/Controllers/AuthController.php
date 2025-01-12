@@ -2,12 +2,24 @@
 
 namespace App\Domains\Auth\Controllers;
 
+use App\Domains\Auth\Resources\AuthCollection;
+use App\Domains\Auth\Services\AuthServiceInterface;
+use App\Domains\Utils\Traits\ControllerTrait;
 use App\Http\Controllers\Controller;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
+    use ControllerTrait;
+
+    public function __construct(private AuthServiceInterface $authService)
+    {
+    }
+
     // 로그인
     public function login(Request $request)
     {
@@ -61,5 +73,41 @@ class AuthController extends Controller
 //        auth()->login($user);
         // 생성한 사용자 객체로 로그인한
 //        flash(auth()->user()->name . '님 환영합니다');
+    }
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name'  => 'required|string|max:100', // 회원 이름
+            'company_name'  => 'required|string|max:50', // 회사 이름
+            'phone_number' => 'required|string|max:50', // 회원 연락처
+            'email'      => 'required|string|email|max:255|unique:users', // 회원 이메일
+            'password'   => 'required|string|min:6|confirmed',
+            'business_number'  => 'required|string|max:50', // 사업자 번호
+            'company_number'  => 'required|string|max:50', // 회사 연락처
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()], 422);
+        }
+
+        try {
+            $user = $this->authService->create([
+                'name' => $request->input('name'),
+                'company_name' => $request->input('company_name'),
+                'phone_number' => $request->input('phone_number'),
+                'email' => $request->input('email'),
+                'password' => Hash::make($request->input('password')),
+                'business_id' => $request->input('business_number'),
+                'company_number' => $request->input('company_number')
+            ]);
+        }catch(Exception $e){
+            return $this->errorResponse($e->getMessage(), $e->getCode(), 422);
+        }
+
+        return $this->successResponse([
+            'email' => $user->getEmail(),
+            'name' => $user->getName(),
+        ]);
     }
 }

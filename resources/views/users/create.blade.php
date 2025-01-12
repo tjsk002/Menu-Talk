@@ -83,7 +83,7 @@
             privacy_agree: document.getElementById('privacy_agree').checked // 약관동의
         };
 
-        axios.post('{{ route('users.store') }}', formData)
+        axios.post('/auth/join', formData)
             .then(function(response) {
                 alert('가입이 정상적으로 완료되었습니다!');
                 window.location.href = '/auth/login'; // 성공 후 로그인 페이지로 이동
