@@ -75,6 +75,11 @@ class AuthController extends Controller
 //        flash(auth()->user()->name . '님 환영합니다');
     }
 
+    public function viewJoin()
+    {
+        return view('users.create');
+    }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
