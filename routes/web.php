@@ -74,11 +74,6 @@ Route::get('auth/join', [
     'uses' => 'UsersController@create',
 ]);
 
-Route::post('auth/join', [
-    'as' => 'users.store',
-    'uses' => 'UsersController@store',
-]);
-
 Route::middleware('')->prefix('/')->group(function (){
     Route::get('/invoice', 'App\Domains\Manages\Controllers\InvoiceController@invoice')->name('manage.invoice');
 });

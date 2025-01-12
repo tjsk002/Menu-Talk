@@ -22,20 +22,6 @@
                 <input type="text" id="business_number" class="form-control" placeholder="사업자 번호" maxlength="50">
                 <input type="text" id="company_number" class="form-control" placeholder="회사 연락처" maxlength="50">
             </div>
-            <div>
-                <div id="toggleAll">
-                    <span>모두 동의합니다.</span>
-                </div>
-                <label><br>
-                    <input type="checkbox" id="over_14" class="checkbox" required="required"> 만 14세 이상입니다.
-                </label>
-                <label><br>
-                    <input type="checkbox" id="terms_agree" class="checkbox" required="required"> [필수] 이용약관
-                </label>
-                <label><br>
-                    <input type="checkbox" id="privacy_agree" class="checkbox" required="required"> [필수] 개인정보 수집 및 이용 동의
-                </label>
-            </div>
             <button id="submitBtn" class="btn btn-primary form-control">가입</button>
         </div>
     </div>
@@ -83,7 +69,7 @@
             privacy_agree: document.getElementById('privacy_agree').checked // 약관동의
         };
 
-        axios.post('{{ route('users.store') }}', formData)
+        axios.post('/auth/join', formData)
             .then(function(response) {
                 alert('가입이 정상적으로 완료되었습니다!');
                 window.location.href = '/auth/login'; // 성공 후 로그인 페이지로 이동
