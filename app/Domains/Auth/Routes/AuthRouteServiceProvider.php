@@ -9,7 +9,9 @@ class AuthRouteServiceProvider extends ServiceProvider
     public function boot() {
        Route::prefix('auth')->group(function (){
            Route::get('/join', 'App\Domains\Auth\Controllers\AuthController@viewJoin');
-           Route::post('/join', 'App\Domains\Auth\Controllers\AuthController@store');
+           Route::post('/join', 'App\Domains\Auth\Controllers\AuthController@join');
+           Route::get('/login', 'App\Domains\Auth\Controllers\AuthController@viewLogin');
+           Route::post('/login', 'App\Domains\Auth\Controllers\AuthController@login');
        });
     }
 }
