@@ -14,4 +14,14 @@ class AuthService implements AuthServiceInterface
     {
         return $this->user->create($args);
     }
+
+    public function login(array $args)
+    {
+        // TODO: Implement login() method.
+    }
+
+    public function findUser(string $email)
+    {
+       return $this->user->where(['email' => $email])->first();
+    }
 }
