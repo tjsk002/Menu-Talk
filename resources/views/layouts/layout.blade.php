@@ -62,8 +62,7 @@
                             </svg>
                             </button>
                         </a></li>
-                    <li><a href="{{route('sessions.store')}}">로그인</a></li>
-{{--                    <li><a href="{{route('manage.auth.login')}}">로그인</a></li>--}}
+                    <li><a href="/auth/login">로그인</a></li>
                     <li><a href="/auth/join">회원가입</a></li>
 {{--                </ul>--}}
             </li>
