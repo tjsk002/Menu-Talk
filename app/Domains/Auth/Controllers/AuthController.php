@@ -77,10 +77,10 @@ class AuthController extends Controller
 
     public function viewJoin()
     {
-        return view('users.create');
+        return view('auth-v2.create');
     }
 
-    public function store(Request $request)
+    public function join(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name'  => 'required|string|max:100', // 회원 이름
