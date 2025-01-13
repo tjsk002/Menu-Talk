@@ -29,17 +29,6 @@ Route::middleware('')->prefix('/')->group(function (){
     Route::get('/invoice', 'App\Domains\Manages\Controllers\InvoiceController@invoice')->name('manage.invoice');
 });
 
-/*사용자 인증*/
-
-Route::get('auth/login', [
-    'as' => 'sessions.create',
-    'uses' => 'SessionsController@create',
-]);
-Route::post('auth/login', [
-    'as' => 'sessions.store',
-    'uses' => 'SessionsController@store',
-]);
-
 //Route::prefix('/manage/auth')->group(function (){
 ////    Route::get('/login', ['App\Http\Controllers\SessionsController@create'])->name('manage.auth.login');
 ////    Route::post('auth/login', [
