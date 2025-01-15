@@ -21,6 +21,11 @@ class User extends Model
         'company_number',
     ];
 
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
     public function getName(): string
     {
         return $this->name;
