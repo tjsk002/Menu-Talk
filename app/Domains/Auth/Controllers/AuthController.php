@@ -94,4 +94,6 @@ class AuthController extends Controller
 
         return response()->json(['errors' => '이메일 혹은 비밀번호를 확인해주세요.'], 422);
     }
+
+
 }
