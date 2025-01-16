@@ -17,20 +17,13 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (Auth::user()) {
-           return redirect('/');
+        $guards = empty($guards) ? [null] : $guards;
 
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check()) {
+                return redirect('/');
+            }
         }
-        // guest() <-> check()
-//        if($request::guard($guard)->guest()){
-//            // Auth::guard($guard)->guest() 와 같다고 봐도 된다
-//            if($request->ajax() || $request->wantsJson()){
-//                return response('Unauthourized, 401');
-//            }else{
-//                return redirect()-> guest('/login');
-////                return redirect()-> guest('admin/login');
-//            }
-//        }
 
         return $next($request);
     }

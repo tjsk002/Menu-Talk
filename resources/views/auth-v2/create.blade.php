@@ -68,8 +68,10 @@
 
         axios.post('/auth/join', formData)
             .then(function(response) {
-                alert('가입이 정상적으로 완료되었습니다!');
-                window.location.href = '/auth/login'; // 성공 후 로그인 페이지로 이동
+                if(response.status === 200) {
+                    alert('가입이 정상적으로 완료되었습니다!');
+                    window.location.href = '/auth/login';
+                }
             })
             .catch(function(error) {
                 if (error.response.status !== 200) {

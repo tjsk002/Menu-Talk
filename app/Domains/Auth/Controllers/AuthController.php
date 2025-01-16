@@ -90,7 +90,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/auth');
+            return redirect()->intended('/');
         }
 
         return response()->json(['errors' => '이메일 혹은 비밀번호를 확인해주세요.'], 422);
