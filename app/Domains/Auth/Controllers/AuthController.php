@@ -6,6 +6,7 @@ use App\Domains\Auth\Services\AuthServiceInterface;
 use App\Domains\Utils\Traits\ControllerTrait;
 use App\Http\Controllers\Controller;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -95,5 +96,11 @@ class AuthController extends Controller
         return response()->json(['errors' => '이메일 혹은 비밀번호를 확인해주세요.'], 422);
     }
 
-
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/auth/login');
+    }
 }
