@@ -69,15 +69,15 @@
         </ul>
         @elseif(auth()->user())
         <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown"><a href="#" class="dropdown-toggle"
-                                    data-toggle="dropdown" role="button" aria-haspopup="true"
-                                    aria-expanded="false">회원관리<span class="caret"></span></a>
-                <ul class="dropdown-menu">
+{{--            <li class="dropdown"><a href="#" class="dropdown-toggle"--}}
+{{--                                    data-toggle="dropdown" role="button" aria-haspopup="true"--}}
+{{--                                    aria-expanded="false">회원관리<span class="caret"></span></a>--}}
+{{--                <ul class="dropdown-menu">--}}
                     <li><a href="#">개인정보 변경</a></li>
                     <li><a href="{{route('remind.store')}}">비밀번호 변경</a></li>
-{{--                    <li><a href="{{route('sessions.destroy')}}"><strong>{{auth()->user()->name}}</strong>님 로그아웃</a></li>--}}
-                </ul>
-            </li>
+                    <li><a href="/auth/logout"><strong>{{auth()->user()->getName()}}</strong>님 로그아웃</a></li>
+{{--                </ul>--}}
+{{--            </li>--}}
         </ul>
         @endif
     </div>

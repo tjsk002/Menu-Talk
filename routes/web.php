@@ -46,11 +46,6 @@ Route::middleware('')->prefix('/')->group(function (){
 //    ]);
 //});
 
-Route::get('auth/logout', [
-    'as' => 'sessions.destroy',
-    'uses' => 'SessionsController@destroy',
-]);
-
 Route::get('auth/remind', [
     'as' => 'remind.create',
     'uses' => 'PasswordsController@getRemind',
