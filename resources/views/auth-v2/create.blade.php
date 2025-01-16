@@ -22,7 +22,7 @@
                 <input type="text" id="business_number" class="form-control" placeholder="사업자 번호" maxlength="50">
                 <input type="text" id="company_number" class="form-control" placeholder="회사 연락처" maxlength="50">
             </div>
-            <button id="submitBtn" class="btn btn-primary form-control">가입</button>
+            <button id="joinBtn" class="btn btn-primary form-control">가입</button>
         </div>
     </div>
     <div class="col-lg-4"></div>
@@ -51,7 +51,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script>
-    document.getElementById('submitBtn').addEventListener('click', function(event) {
+    document.getElementById('joinBtn').addEventListener('click', function(event) {
         event.preventDefault();
 
         // 폼 데이터 수집

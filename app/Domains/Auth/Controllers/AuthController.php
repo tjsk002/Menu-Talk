@@ -2,7 +2,6 @@
 
 namespace App\Domains\Auth\Controllers;
 
-use App\Domains\Auth\Resources\AuthCollection;
 use App\Domains\Auth\Services\AuthServiceInterface;
 use App\Domains\Utils\Traits\ControllerTrait;
 use App\Http\Controllers\Controller;
@@ -20,62 +19,12 @@ class AuthController extends Controller
     {
     }
 
-    // 로그인
-    public function login(Request $request)
+    public function viewJoin()
     {
-        $credentials = $request->validate([
-            'name' => 'required|max:50',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required',
-        ]);
-
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
-
-            return redirect()->intended('dashboard');
-        }
-
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
-
-
-//        $user = \App\User::create([
-//            // DB에 입력한 값 input
-//            'name' => $request->input('name'),
-//            //  Request::input('name')과 같다
-//            'email' => $request->input('email'),
-//            'password' => bcrypt($request->input('password')),
-//            'confirmCode'=> $confirmCode,
-////            'businessNumber' => $request->input('business_number')
-//        ]);
-//
-//        auth()->login($user);
-//        flash(auth()->user()->name . '님 환영합니다.');
-
-        /**
-         * 이메일 보내기 추출 -> 컨트롤러에서 가입 확인 메일을 보내지말고, 이벤트를 던져 이벤트 리스너에서 메일을 보낸다
-         */
-
-//        event(new \App\Events\UserCreated($user));
-//        \Mail::send('emails.auth.confirm',compact('user'), function ($message)use($user){
-//        event(new \App\Events\UserCreated($user));
-//            $message->to($user -> email);
-//            $message->subject(
-//                sprintf('[%s 회원가입을 확인해 주세요.]', config('app.name'))
-//            );
-//        });
-
-//        return $this->respondCreated('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
-//        flash('가입하신 메일 계정으로 가입 확인 메일을 보내드렸습니다. 가입 확인 하시고 로그인해 주세요.');
-//        return redirect('/');
-
-//        auth()->login($user);
-        // 생성한 사용자 객체로 로그인한
-//        flash(auth()->user()->name . '님 환영합니다');
+        return view('auth-v2.create');
     }
 
-    public function store(Request $request)
+    public function join(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name'  => 'required|string|max:100', // 회원 이름
@@ -110,4 +59,41 @@ class AuthController extends Controller
             'name' => $user->getName(),
         ]);
     }
+
+    public function viewLogin()
+    {
+        return view('auth-v2.login');
+    }
+
+    public function login(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email'    => 'required|string|email|max:255',
+            'password' => 'required|string',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()->all()], 422);
+        }
+
+        $user = $this->authService->findUser($request->input('email'));
+        if(!$user) {
+            return response()->json(['errors' => '가입되지 않은 이메일입니다.'], 422);
+        }
+
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/auth');
+        }
+
+        return response()->json(['errors' => '이메일 혹은 비밀번호를 확인해주세요.'], 422);
+    }
+
+
 }

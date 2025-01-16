@@ -31,7 +31,7 @@
                     <div class="form-group">
                         <p class="text-center login-text">
 {{--                            회원이 아니라면?<br>--}}
-                            <a href="{{route('users.create')}}">회원가입하러가기</a>
+{{--                            <a href="{{route('users.create')}}">회원가입하러가기</a>--}}
                             <br>
                             <a href="{{route('remind.create')}}">
                                 비밀번호를 잊으셨나요?
