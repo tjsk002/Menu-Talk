@@ -32,7 +32,7 @@
     <div class="collapse navbar-collapse"
          id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-            <li><a href="{{route('home2')}}">메인</a></li>
+{{--            <li><a href="/contact-form">문의하기</a></li>--}}
             <li><a href="{{route('index')}}">게시판</a></li>
             <li>
                 <a href="#" id="button1">스크롤
@@ -73,7 +73,7 @@
 {{--                                    data-toggle="dropdown" role="button" aria-haspopup="true"--}}
 {{--                                    aria-expanded="false">회원관리<span class="caret"></span></a>--}}
 {{--                <ul class="dropdown-menu">--}}
-                    <li><a href="#">개인정보 변경</a></li>
+                    <li><a href="/auth/profile">나의 프로필</a></li>
                     <li><a href="{{route('remind.store')}}">비밀번호 변경</a></li>
                     <li><a href="/auth/logout"><strong>{{auth()->user()->getName()}}</strong>님 로그아웃</a></li>
 {{--                </ul>--}}

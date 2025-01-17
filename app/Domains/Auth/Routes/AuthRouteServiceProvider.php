@@ -17,6 +17,9 @@ class AuthRouteServiceProvider extends ServiceProvider
             Route::get('/login', 'App\Domains\Auth\Controllers\AuthController@viewLogin');
             Route::post('/login', 'App\Domains\Auth\Controllers\AuthController@login');
             Route::get('/logout', 'App\Domains\Auth\Controllers\AuthController@logout');
+
+            Route::get('/profile', 'App\Domains\Auth\Controllers\ProfileController@viewProfile');
+            Route::post('/profile', 'App\Domains\Auth\Controllers\ProfileController@updateProfile');
         });
     }
 }

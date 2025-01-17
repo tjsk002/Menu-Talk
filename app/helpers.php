@@ -2,8 +2,7 @@
 
 namespace App;
 
-//use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\helpsers;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * 컨트롤러와 도우미 함수

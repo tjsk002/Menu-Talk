@@ -45,7 +45,7 @@ class ContactController extends Controller
 
     private function sendMail($contact): void
     {
-        Mail::to('lim@naver.com')
+        Mail::to('tjsk002@naver.com')
             ->cc([])->send(new NewContactUs($contact));
     }
 }
