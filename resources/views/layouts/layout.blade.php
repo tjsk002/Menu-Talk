@@ -45,9 +45,11 @@
             <div class="dropdown">
                 <span class="drop-btn"><strong>{{auth()->user()->getName()}}</strong>님</span>
                 <div class="dropdown-content">
-                    <a href="/auth/profile">내 정보</a>
+                    <a href="/auth/profile">정보 관리</a>
+                    <a href="/auth/menu">메뉴 관리</a>
+                    <a href="/auth/table">테이블 관리</a>
                     <a href="/auth/logout">로그아웃</a>
-                    <a href="#">비밀번호 변경</a>
+                    <a href="/auth/password">비밀번호 변경</a>
                 </div>
             </div>
         @else
@@ -77,7 +79,6 @@
         cursor: pointer;
         position : relative;
         display : inline-block;
-        width: 150px;
         text-align: center;
         line-height: 50px;
         float: right;
@@ -90,10 +91,11 @@
     }
 
     .dropdown-content a{
-        width: 150px;
+        width: 200px;
         display : block;
         line-height: 40px;
         background-color: #ffffff;
+        color: #777;
     }
 
     .dropdown:hover .dropdown-content {
