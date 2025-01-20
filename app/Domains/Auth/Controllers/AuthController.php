@@ -33,7 +33,7 @@ class AuthController extends Controller
             'phone_number' => 'required|string|max:50', // 회원 연락처
             'email'      => 'required|string|email|max:255|unique:users', // 회원 이메일
             'password'   => 'required|string|min:6|confirmed',
-            'business_number'  => 'required|string|max:50', // 사업자 번호
+            'business_id'  => 'required|string|max:50', // 사업자 번호
             'company_number'  => 'required|string|max:50', // 회사 연락처
         ]);
 
@@ -48,7 +48,7 @@ class AuthController extends Controller
                 'phone_number' => $request->input('phone_number'),
                 'email' => $request->input('email'),
                 'password' => Hash::make($request->input('password')),
-                'business_id' => $request->input('business_number'),
+                'business_id' => $request->input('business_id'),
                 'company_number' => $request->input('company_number')
             ]);
         }catch(Exception $e){
@@ -90,7 +90,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/auth');
+            return redirect()->intended('/');
         }
 
         return response()->json(['errors' => '이메일 혹은 비밀번호를 확인해주세요.'], 422);

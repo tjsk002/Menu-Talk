@@ -19,7 +19,7 @@
             {{-- 회사정보 --}}
             <div class="form-group" style="margin-top: 40px;">
                 <input type="text" id="company_name" class="form-control" placeholder="회사 이름" maxlength="50">
-                <input type="text" id="business_number" class="form-control" placeholder="사업자 번호" maxlength="50">
+                <input type="text" id="business_id" class="form-control" placeholder="사업자 번호" maxlength="50">
                 <input type="text" id="company_number" class="form-control" placeholder="회사 연락처" maxlength="50">
             </div>
             <button id="joinBtn" class="btn btn-primary form-control">가입</button>
@@ -62,14 +62,16 @@
             password: document.getElementById('password').value,
             password_confirmation: document.getElementById('password_confirmation').value,
             company_name: document.getElementById('company_name').value,
-            business_number: document.getElementById('business_number').value,
+            business_id: document.getElementById('business_id').value,
             company_number: document.getElementById('company_number').value,
         };
 
         axios.post('/auth/join', formData)
             .then(function(response) {
-                alert('가입이 정상적으로 완료되었습니다!');
-                window.location.href = '/auth/login'; // 성공 후 로그인 페이지로 이동
+                if(response.status === 200) {
+                    alert('가입이 정상적으로 완료되었습니다!');
+                    window.location.href = '/auth/login';
+                }
             })
             .catch(function(error) {
                 if (error.response.status !== 200) {

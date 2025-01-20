@@ -54,7 +54,9 @@
 
             axios.post('/auth/login', formData)
                 .then(function (response) {
-                    alert(response);
+                    if(response.status === 200) {
+                        window.location.href = '/';
+                    }
                 })
                 .catch(function (error) {
                     if (error.response.status !== 200) {
