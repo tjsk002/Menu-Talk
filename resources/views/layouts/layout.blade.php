@@ -33,52 +33,30 @@
          id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
 {{--            <li><a href="/contact-form">문의하기</a></li>--}}
-            <li><a href="{{route('index')}}">게시판</a></li>
+{{--            <li><a href="{{route('index')}}">게시판</a></li>--}}
             <li>
-                <a href="#" id="button1">스크롤
+                <a href="#" id="button1">문의하기
 {{--                    <button id="button1">스크롤</button>--}}
                 </a>
             </li>
         </ul>
-        @if(auth()->guest())
-        <ul class="nav navbar-nav navbar-right">
-{{--            <li class="dropdown"><a href="#" class="dropdown-toggle"--}}
-{{--                                    data-toggle="dropdown" role="button" aria-haspopup="true"--}}
-{{--                                    aria-expanded="false">접속하기<span class="caret"></span></a>--}}
-{{--                <ul class="dropdown-menu">--}}
-                    <li><a href="">
-                            @php
-                                $userId = 11;
-                            @endphp
-                            문의하기
-{{--                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="modal"--}}
-{{--                                    data-bs-target="#invoiceModal{{$userId}}">--}}
-                            <button type="button" class="btn btn-link btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#invoiceModal">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                 fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                            </svg>
-                            </button>
-                        </a></li>
-                    <li><a href="/auth/login">로그인</a></li>
-                    <li><a href="/auth/join">회원가입</a></li>
-{{--                </ul>--}}
-            </li>
-        </ul>
-        @elseif(auth()->user())
-        <ul class="nav navbar-nav navbar-right">
-{{--            <li class="dropdown"><a href="#" class="dropdown-toggle"--}}
-{{--                                    data-toggle="dropdown" role="button" aria-haspopup="true"--}}
-{{--                                    aria-expanded="false">회원관리<span class="caret"></span></a>--}}
-{{--                <ul class="dropdown-menu">--}}
-                    <li><a href="/auth/profile"><strong>{{auth()->user()->getName()}}</strong>님 정보</a></li>
-{{--                    <li><a href="{{route('remind.store')}}">비밀번호 변경</a></li>--}}
-                    <li><a href="/auth/logout">로그아웃</a></li>
-{{--                </ul>--}}
-{{--            </li>--}}
-        </ul>
+
+        @if(auth()->user())
+            <div class="dropdown">
+                <span class="drop-btn"><strong>{{auth()->user()->getName()}}</strong>님</span>
+                <div class="dropdown-content">
+                    <a href="/auth/profile">정보 관리</a>
+                    <a href="/auth/menu">메뉴 관리</a>
+                    <a href="/auth/table">테이블 관리</a>
+                    <a href="/auth/logout">로그아웃</a>
+                    <a href="/auth/password">비밀번호 변경</a>
+                </div>
+            </div>
+        @else
+        <div class="guest-form">
+            <a href="/auth/login">로그인</a>
+            <a href="/auth/join">회원가입</a>
+        </div>
         @endif
     </div>
 </nav>
@@ -96,7 +74,45 @@
 {{--@include('manage.invoice_modal', ['user_id', $userId]);--}}
 @include('manage.invoice_modal')
 @yield('content')
+<style>
+    .dropdown{
+        cursor: pointer;
+        position : relative;
+        display : inline-block;
+        text-align: center;
+        line-height: 50px;
+        float: right;
+    }
 
+    .dropdown-content{
+        display : none;
+        position : absolute;
+        z-index : 1; /*다른 요소들보다 앞에 배치*/
+    }
+
+    .dropdown-content a{
+        width: 200px;
+        display : block;
+        line-height: 40px;
+        background-color: #ffffff;
+        color: #777;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .guest-form {
+        display: inline-block;
+        line-height: 50px;
+        float: right;
+    }
+
+    .guest-form a {
+        color: #777;
+        padding: 10px 15px;
+    }
+</style>
 <script>
     const button1 = document.getElementById('button1');
     const section1 = document.getElementById('section1');

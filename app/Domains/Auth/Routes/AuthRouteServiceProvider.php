@@ -14,12 +14,14 @@ class AuthRouteServiceProvider extends ServiceProvider
        });
 
         Route::group(['middleware' => ['web'], 'prefix' => 'auth'], function () {
-            Route::get('/login', 'App\Domains\Auth\Controllers\AuthController@viewLogin');
+            Route::get('/login', 'App\Domains\Auth\Controllers\AuthController@viewLogin')->name('login');
             Route::post('/login', 'App\Domains\Auth\Controllers\AuthController@login');
-            Route::get('/logout', 'App\Domains\Auth\Controllers\AuthController@logout');
+            Route::get('/logout', 'App\Domains\Auth\Controllers\AuthController@logout')->name('logout');
 
-            Route::get('/profile', 'App\Domains\Auth\Controllers\ProfileController@viewProfile');
-            Route::post('/profile', 'App\Domains\Auth\Controllers\ProfileController@updateProfile');
+            Route::group(['middleware' => ['auth']], function () {
+                Route::get('/profile', 'App\Domains\Auth\Controllers\ProfileController@viewProfile');
+                Route::post('/profile', 'App\Domains\Auth\Controllers\ProfileController@updateProfile');
+            });
         });
     }
 }
