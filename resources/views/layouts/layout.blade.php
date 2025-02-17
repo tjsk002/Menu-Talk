@@ -85,6 +85,7 @@
     }
 
     .dropdown-content{
+        right: 0;
         display : none;
         position : absolute;
         z-index : 1; /*다른 요소들보다 앞에 배치*/

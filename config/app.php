@@ -177,6 +177,7 @@ return [
         App\Domains\Auth\Providers\AuthServiceProvider::class,
         App\Domains\Auth\Routes\AuthRouteServiceProvider::class,
         App\Domains\Tables\Routes\TableRouteServiceProvider::class,
+        App\Domains\Menu\Routes\MenuRouteServiceProvider::class,
         App\Domains\Contacts\Providers\ContactRouteServiceProvider::class,
         App\Domains\Contacts\Providers\ContactServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
