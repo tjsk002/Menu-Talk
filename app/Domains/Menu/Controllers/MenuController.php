@@ -41,12 +41,13 @@ class MenuController extends Controller
         try {
             $menu = Menu::create([
                 'category' => $request->input('category'),
-                'tag' => $request->input('tag'),
+                'user_id' => $request->user()->id,
+                'tag' => $request->input('tag') ?? null,
                 'title' => $request->input('title'),
                 'content' => $request->input('content') ?? null,
-                'sub_title' => $request->input('sub_title'),
+                'sub_title' => $request->input('sub_title') ?? null,
                 'price' => $request->input('price'),
-                'img_url' => $request->input('img_url'),
+                'img_url' => $request->input('img_url') ?? null,
             ]);
         }catch(Exception $e){
             return $this->errorResponse($e->getMessage(), $e->getCode(), 422);

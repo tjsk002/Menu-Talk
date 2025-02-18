@@ -13,8 +13,9 @@
                     태그: <input type="email" id="tag" class="form-control" placeholder="태그" maxlength="50" value="" >
                     제목: <input type="text" id="title" class="form-control" placeholder="제목" maxlength="50" value="">
                     설명: <input type="text" id="sub_title" class="form-control" placeholder="설명" maxlength="50" value="">
+                    상세 설명: <input type="text" id="content" class="form-control" placeholder="상세 설명" maxlength="50" value="">
                     가격:<input type="number" id="price" class="form-control" placeholder="가격" maxlength="50" value="">
-                    사진 업로드: <input type="text" id="img_url" class="form-control" placeholder="사진" maxlength="50" value="">
+                    사진 업로드 URL: <input type="text" id="img_url" class="form-control" placeholder="사진" maxlength="50" value="">
                 </div>
                 <button id="newMenu" class="btn btn-primary form-control">저장</button>
             </div>
@@ -32,6 +33,7 @@
                 tag: document.getElementById('tag').value,
                 title: document.getElementById('title').value,
                 sub_title: document.getElementById('sub_title').value,
+                content: document.getElementById('content').value,
                 price: document.getElementById('price').value,
                 img_url: document.getElementById('img_url').value,
             };

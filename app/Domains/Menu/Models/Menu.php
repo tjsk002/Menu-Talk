@@ -13,12 +13,20 @@ class Menu extends Model
 
     protected $fillable = [
         'id',
+        'user_id',
         'category',
         'title',
         'sub_title',
         'price',
+        'img_url',
         'tag',
     ];
+
+    public function getUserId(): ?int
+    {
+        return $this->user_id;
+    }
+
     public function getCategory(): ?string
     {
         return $this->category;
@@ -37,6 +45,11 @@ class Menu extends Model
     public function getPrice(): ?float
     {
         return $this->price;
+    }
+
+    public function getImgUrl(): ?string
+    {
+        return $this->img_url;
     }
 
     public function getTag(): ?string
