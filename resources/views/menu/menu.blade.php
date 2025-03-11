@@ -9,12 +9,17 @@
             <div class="jumbotron" style="padding-top: 20px; text-align: center;">
                 <h3 style="text-align: center;">내 메뉴 관리</h3>
                 <div class="form-group">
-                    <div>메뉴 총 개수 : 10</div>
+                    <div>메뉴 총 개수 : {{$count}}</div>
                     @foreach($menu as $item)
                     <div class="menu-one-box">
                         <div class="text-box">
                             <div class="menu-img-box">
-                                <img src={{$item->getImgUrl()}}>
+                                @if($item->getImgUrl())
+                                    <img src={{$item->getImgUrl()}}>
+                                @else
+                                    <img src="https://img.freepik.com/premium-vector/no-photo-available-vector-icon-default-image-symbol-picture-coming-soon-web-site-mobile-app_87543-18055.jpg">
+{{--                                    <div class="empty-img-box"></div>--}}
+                                @endif
                             </div>
                             <span><{{$item->getCategory()}}></span><br>
                             <span class="first-span">{{$item->getTitle()}}</span><br>
@@ -42,6 +47,7 @@
         }
         .menu-img-box img {
             width: 250px;
+            height: 200px;
         }
         .text-box {
             margin-top: 20px;

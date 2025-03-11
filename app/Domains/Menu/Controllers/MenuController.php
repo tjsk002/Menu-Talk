@@ -26,7 +26,8 @@ class MenuController extends Controller
 
         return view('menu.menu',[
             'user' => $user,
-            'menu' => $menuList
+            'menu' => $menuList,
+            'count' => $menuList->count()
         ]);
     }
 
