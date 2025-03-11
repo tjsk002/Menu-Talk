@@ -180,6 +180,7 @@ return [
         App\Domains\Menu\Routes\MenuRouteServiceProvider::class,
         App\Domains\Contacts\Providers\ContactRouteServiceProvider::class,
         App\Domains\Contacts\Providers\ContactServiceProvider::class,
+        App\Domains\Menu\Providers\MenuServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
