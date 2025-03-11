@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory;
@@ -25,6 +26,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'remember_token',
     ];
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
     public function getName(): string
     {

@@ -3,6 +3,7 @@
 namespace App\Domains\Menu\Controllers;
 
 use App\Domains\Menu\Models\Menu;
+use App\Domains\Menu\Services\MenuServiceInterface;
 use App\Domains\Utils\Traits\ControllerTrait;
 use App\Http\Controllers\Controller;
 use Exception;
@@ -12,11 +13,20 @@ class MenuController extends Controller
 {
     use ControllerTrait;
 
+    public function __construct(
+        private MenuServiceInterface $menuService
+    )
+    {
+    }
+
     // 메뉴관리 페이지
     public function viewMenu(Request $request){
         $user = $request->user();
+        $menuList = $this->menuService->getMenuList($user);
+
         return view('menu.menu',[
-            'user' => $user
+            'user' => $user,
+            'menu' => $menuList
         ]);
     }
 
